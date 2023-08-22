@@ -1,0 +1,62 @@
+
+
+.login {
+  width: 50%;
+  margin: auto;
+}
+.login {
+  margin-top: 150px;
+  text-align: center;
+}
+.login h2 {
+  margin-bottom: 20px;
+}
+.login form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.login input{
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.invalid-email {
+  color: red;
+  padding:10px 0 30px 0;
+}
+.connexion-message{
+  margin-top: 20px;
+}
+.submit{
+  font-family: "syne";
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  padding: 0 120px;
+}
+.submit:hover{
+  background-color: #B1663C;
+  cursor: pointer;
+}
+.forgot-password {
+  font-family: work sans;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  color: black; 
+}
+.forgot-password:hover {
+  color: red;
+}
+footer nav ul li {
+  margin-top: 200px;
+  cursor: pointer;
+}
+
+footer nav ul li:hover {
+  color: #B1663C;
+}
