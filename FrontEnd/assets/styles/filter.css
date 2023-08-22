@@ -1,0 +1,25 @@
+.filter-container{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 50px 0;
+}
+.filter-button{
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.2px;
+  background-color: #fff;
+  color: #1D6154;
+  border: 1px solid #1D6154;
+  padding: 0.5rem 1rem;
+  border-radius: 60px;
+}
+.filter-button:hover{
+  background-color: #1D6154;
+  color: #fff;
+}
+.filter-button.active{
+  background-color: #1D6154;
+  color: #fff;
+}

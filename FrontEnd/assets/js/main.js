@@ -7,6 +7,7 @@
 import { getAPIData } from "./utils/api.js";
 import { allWorks, allCategories } from "./utils/constants.js";
 import { generateWorksInGallery } from "./module/gallery.js";
+import { displayCategoryFilterButtons } from "./module/filter.js";
 
 /**
  * @description Initialise l'application en chargeant les projets, les catégories et en configurant les modales et les boutons.
@@ -29,6 +30,7 @@ async function initializeApplication() {
 
     // Génère et affiche les travaux dans la galerie
     generateWorksInGallery();
+    displayCategoryFilterButtons();
 
   } catch (error) {
     console.error(
