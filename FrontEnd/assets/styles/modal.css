@@ -11,7 +11,7 @@
 .modalContainer{
   position: fixed;
   top: 10%;
-  left: 30%;
+  left: 40%;
   width: 630px;
   height: 731px;
   background-color: white;
@@ -226,6 +226,19 @@
   background-color:#E8F1F6;
   border-radius: 5px;
   box-shadow: 0px 4px 14px 0px #00000012;
+  z-index: 1000;
+}
+.secondModalLayout .imagePreviewContainer{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  height: 189px;
+  background-color:#E8F1F6;
+  border-radius: 5px;
+  box-shadow: 0px 4px 14px 0px #00000012;
+  visibility: hidden;
 }
 .secondModalLayout .addImageContainer i{
   position: absolute;
@@ -252,6 +265,17 @@
   top : 65%;
   visibility: hidden;
 }
+#imagePreview{
+  width: 33%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  visibility: hidden;
+}
 .modalContainer p{
   position: absolute;
   top: 85%;
@@ -266,7 +290,7 @@
   font-family: work sans;
   font-size: 14px;
   font-weight: 500;
-  top: 47%;
+  top: 46%;
   left: 17%;
   color: #3D3D3D;
 }
@@ -275,7 +299,7 @@
   font-size: 20px;
   font-weight: 500;
   position: absolute;
-  top: 54%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 417px;
@@ -289,7 +313,7 @@
   font-family: work sans;
   font-size: 14px;
   font-weight: 500;
-  top: 60%;
+  top: 61%;
   left: 17%;
   color: #3D3D3D;
 }
@@ -298,7 +322,7 @@
   font-size: 20px;
   font-weight: 500;
   position: absolute;
-  top: 67%;
+  top: 68%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 420px;
@@ -330,11 +354,39 @@
   border: none;
   border-radius: 60px;
   padding: 12px 90px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ;
 }
 .secondModalLayout .validateButton:hover{
   background-color: #B1663C;
 }
 .secondModalLayout .validateButton:active{
-  transform: scale(0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.secondModalLayout #imageError{
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  font-family: work sans;
+  font-size: 12px;
+  font-weight: 500;
+  
+}
+.secondModalLayout #submitError{
+  position: absolute;
+  top: 75%;
+  transform: translate(-50%, -50%);
+  font-family: work sans;
+  font-size: 12px;
+  font-weight: 500;
+  color: red;
+}
+.secondModalLayout .inputErrorSelect{
+top: 73%; 
+left: 26.5%;
+}
+
+.secondModalLayout .inputErrorTitle{
+  position: absolute;
+  top: 58%;
+  left: 24%;
 }

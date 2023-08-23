@@ -9,6 +9,7 @@
  */
 
 import { allWorks } from "../utils/constants.js";
+import { deleteWork } from "../utils/api.js";
 
 /**
  * @description Génère et affiche les travaux dans la galerie en fonction du filtre de catégorie spécifié.
@@ -130,4 +131,21 @@ export function showWorksInModal() {
     figureModal.append(moveButton);
     worksContainer.append(figureModal);
   });
+}
+
+/**
+ * @description Confirme la suppression d'un travail et appelle la fonction de suppression.
+ * @async
+ * @function
+ * @param {string} workId - L'ID du travail à supprimer.
+ * @returns {Promise<number>|undefined} - Le code d'état de la réponse HTTP si confirmé, sinon undefined.
+ */
+export async function confirmDeleteWork(workId) {
+  // Vérifie si l'utilisateur confirme la suppression
+  if (confirm("Êtes-vous sûr de vouloir supprimer ce projet ?")) {
+    // Appelle la fonction de suppression et attend sa réponse
+    const deleteStatus = await deleteWork(workId);
+    return deleteStatus; // Renvoie le code d'état de la réponse HTTP
+  }
+  // Si l'utilisateur n'a pas confirmé la suppression, renvoie undefined
 }

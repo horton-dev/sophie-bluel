@@ -11,7 +11,7 @@ import { displayCategoryFilterButtons } from "./module/filter.js";
 import { configureLoginButton } from "./module/auth.js";
 import { token } from "./utils/constants.js";
 import { activateEditMode } from "./module/ui.js";
-import { openModal, closeModals } from "./module/modal.js";
+import { openModal, closeModals, handleModalRedirection, populateSelectCategory, handleImageUpload } from "./module/modal.js";
 
 /**
  * @description Initialise l'application en chargeant les projets, les catégories et en configurant les modales et les boutons.
@@ -38,6 +38,10 @@ async function initializeApplication() {
       openModal();               // Configuration des modales
       closeModals();             // Configuration des boutons de fermeture des modales
       showWorksInModal();        // Affichage des travaux dans la modale
+      handleModalRedirection();  // Configuration des boutons de redirection dans la modale
+      populateSelectCategory();  // Configuration du menu déroulant de sélection de catégorie
+      handleImageUpload();       // Configuration du bouton d'upload d'image
+      
     } else {
       // Configure les écouteurs d'événements sur les boutons de filtre
     displayCategoryFilterButtons();
