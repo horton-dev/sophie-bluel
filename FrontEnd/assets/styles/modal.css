@@ -1,0 +1,340 @@
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0000004D;
+  z-index: 1000;
+  display: none;
+}
+.modalContainer{
+  position: fixed;
+  top: 10%;
+  left: 30%;
+  width: 630px;
+  height: 731px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  display: none;
+}
+
+/* First Modal */
+.firstModalLayout{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+.firstModalLayout .closeFirstModal{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 0px 10px 0px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.firstModalLayout .closeFirstModal:active{
+  color: red;
+  transform: scale(0.9);
+}
+.firstModalLayout h2{
+  font-family: work sans;
+  font-weight: 400;
+  font-size: 26px;
+  color: black;
+  margin-top: 60px;
+}
+.firstModalLayout .worksContainer{
+  position: absolute;
+  top: 17%;
+  width: 70%;
+  height: 53%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  grid-template-rows: repeat(3, auto);
+  gap: 10px; 
+}
+.firstModalLayout .worksContainer figure img{
+  width: 100%;
+  object-fit: cover;
+}
+.firstModalLayout .worksContainer figure {
+  position: relative;
+}
+.firstModalLayout .worksContainer figure .delete {
+  position: absolute;
+  width: 17px; 
+  height: 17px;
+  font-size: 12px;
+  top: 3px;             
+  right: 3px;
+  padding: 3px 15px 16px 4px;
+  color: white;           
+  background-color: #000000;
+  border: none;
+  cursor: pointer;    /* Style de curseur (optionnel) */
+}
+.firstModalLayout .worksContainer figure .move {
+  position: absolute;
+  width: 17px; 
+  height: 17px;
+  font-size: 12px;
+  top: 3px;             
+  right: 25px;
+  padding: 3px 15px 16px 4px;
+  color: white;           
+  background-color: #000000;
+  border: none;
+  cursor: pointer;    /* Style de curseur (optionnel) */
+}
+.firstModalLayout .worksContainer figure .edit{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+}
+.firstModalLayout .worksContainer figure .edit:hover{
+  color: red;
+}
+.firstModalLayout .worksContainer figure .edit:active{
+  transform: scale(0.9);
+}
+
+.firstModalLayout .separator{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 1px;
+  background-color: #0000004D;
+  margin-top: 20px;
+}
+.firstModalLayout .addWork{
+  position: absolute;
+  top : 83%;
+  font-family: "syne";
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #1D6154;
+  border: none;
+  border-radius: 60px;
+  padding: 12px 50px;
+  transition: all 0.2s ease-in-out;
+}
+.firstModalLayout .addWork:hover{
+  background-color: #B1663C;
+}
+.firstModalLayout .addWork:active{
+  transform: scale(0.9);
+}
+.firstModalLayout .delGallery{
+  position: absolute;
+  top: 92%;
+  font-family: "syne";
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: underline #D65353;
+  color: #D65353;
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+.firstModalLayout .delGallery:active{
+  transform: scale(0.9);
+}
+
+/* Second Modal */
+.secondModalLayout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  display: none;
+}
+.secondModalLayout .closeSecondModal{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  padding: 20px;
+  background-color: transparent;
+  border : none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.secondModalLayout .closeSecondModal:active{
+  color: red;
+  transform: scale(0.9);
+}
+.secondModalLayout .back{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  padding: 20px;
+  background-color: transparent;
+  border : none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.secondModalLayout .back:active{
+  color: red;
+  transform: scale(0.9);
+}
+.secondModalLayout h2{
+  font-family: work sans;
+  font-weight: 400;
+  font-size: 26px;
+  color: black;
+  margin-top: 60px;
+}
+.secondModalLayout .addImageContainer{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  height: 189px;
+  background-color:#E8F1F6;
+  border-radius: 5px;
+  box-shadow: 0px 4px 14px 0px #00000012;
+}
+.secondModalLayout .addImageContainer i{
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 75px;
+  color: #30668538;
+}
+#uploadImageLabel{
+  position: absolute;
+  top : 65%;
+  left: 50%;
+  background-color: #CBD6DC;
+  color: #306685;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+#uploadImage{
+  position: absolute;
+  top : 65%;
+  visibility: hidden;
+}
+.modalContainer p{
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: work sans;
+  font-size: 10px;
+  color: #444444;
+}
+.secondModalLayout #uploadTitle{
+  position: absolute;
+  font-family: work sans;
+  font-size: 14px;
+  font-weight: 500;
+  top: 47%;
+  left: 17%;
+  color: #3D3D3D;
+}
+.secondModalLayout #uploadTitleInput{
+  font-family: work sans;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 417px;
+  height: 51px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+}
+.secondModalLayout #categorySelectTitle{
+  position: absolute;
+  font-family: work sans;
+  font-size: 14px;
+  font-weight: 500;
+  top: 60%;
+  left: 17%;
+  color: #3D3D3D;
+}
+.secondModalLayout #categorySelect{
+  font-family: work sans;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  height: 51px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+}
+.secondModalLayout .separator{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 1px;
+  background-color: #0000004D;
+  margin-top: 20px;
+}
+.secondModalLayout .validateButton{
+  position: absolute;
+  top : 87%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "syne";
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #A7A7A7;
+  border: none;
+  border-radius: 60px;
+  padding: 12px 90px;
+  transition: all 0.2s ease-in-out;
+}
+.secondModalLayout .validateButton:hover{
+  background-color: #B1663C;
+}
+.secondModalLayout .validateButton:active{
+  transform: scale(0.9);
+}

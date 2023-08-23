@@ -53,3 +53,81 @@ export function generateWorksInGallery(categoryFilter = 0) {
     galleryContainerDiv.append(workFigureElement);
   }
 }
+
+/**
+ * @description Affiche les travaux dans une galerie modale et fournit des options pour éditer et supprimer les travaux.
+ * Chaque travail est représenté par un élément "figure" contenant une image, un bouton d'édition et un bouton de suppression.
+ * Le bouton de suppression a un gestionnaire d'événements qui confirme et traite la suppression, y compris la gestion des codes d'erreur.
+ * @function
+ * @requires allWorks - Un Set d'objets représentant tous les travaux, chaque objet doit avoir des propriétés 'id', 'imageUrl', et 'title'.
+ */
+export function showWorksInModal() {
+  // Container qui contient les travaux dans la fenêtre modale
+  const worksContainer = document.querySelector('.worksContainer');
+
+  // Vide le contenu de la fenêtre modale
+  worksContainer.innerHTML = "";
+
+  // Parcourir chaque travail et afficher dans la fenêtre modale
+  allWorks.forEach((work) => {
+    const figureModal = document.createElement('figure');
+    const figureImageModal = document.createElement('img');
+    const editButton = document.createElement('button');
+    const moveButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
+
+    // Récupérer l'image et le titre
+    figureModal.dataset.id = work.id;
+    figureImageModal.src = work.imageUrl;
+    figureImageModal.alt = work.title;
+    editButton.innerText = 'éditer';
+    editButton.classList.add('edit');
+    moveButton.innerHTML = '<i class="fa-solid fa-up-down-left-right"></i>';
+    moveButton.classList.add('move');
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    deleteButton.classList.add('delete');
+
+    // Ajouter un événement pour la suppression
+    deleteButton.addEventListener("click", async (e) => {
+      const figureElement = e.target.closest("figure");
+      const workId = figureElement.dataset.id;
+      const deleteCode = await confirmDeleteWork(workId);
+
+      // Chaque cas correspond à un code d'erreur différent
+      switch (deleteCode) {
+        case 204:
+          figureElement.remove();
+          const galleryFigure = document.querySelector("#figure-" + workId);
+          galleryFigure.remove();
+
+          // Permet de supprimer l'image dans le Set
+          for (const workItem of allWorks) {
+            if (workItem.id == workId) {
+              allWorks.delete(workItem);
+              break;
+            }
+          }
+          break;
+        case 401:
+          alert("Erreur 401: Accès non autorisé. Vous n'avez peut-être pas les permissions nécessaires pour effectuer cette action.");
+          break;
+        case 500:
+          alert("Erreur 500: Problème de serveur. Veuillez réessayer plus tard ou contacter le support technique.");
+          break;
+        case "abort":
+          alert("Opération annulée par l'utilisateur ou par le système.");
+          break;
+        default:
+          alert("Erreur inattendue: " + deleteCode + ". Veuillez contacter le support technique.");
+          break;
+      }
+    });
+
+    // Ajouter les éléments créés à la fenêtre modale
+    figureModal.append(figureImageModal);
+    figureModal.append(editButton);
+    figureModal.append(deleteButton);
+    figureModal.append(moveButton);
+    worksContainer.append(figureModal);
+  });
+}

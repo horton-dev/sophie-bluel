@@ -14,9 +14,54 @@
     <link rel="stylesheet" href="./assets/styles/style.css" />
     <link rel="stylesheet" href="./assets/styles/filter.css" />
 		<link rel="stylesheet" href="./assets/styles/editMode.css">
+		<link rel="stylesheet" href="./assets/styles/modal.css">
 		<script src="https://kit.fontawesome.com/344e8902e3.js" crossorigin="anonymous"></script>
   </head>
   <body>
+		<!-- Modal -->
+		<div class="overlay"></div>
+		<div class="modalContainer">
+			<div class="firstModal">
+				<div class="firstModalLayout">
+					<span class="closeFirstModal">
+						<i class="fa-solid fa-xmark"></i>
+					</span>
+					<h2>Galerie photo</h2>
+					<div class="worksContainer"></div>
+					<div class="separator"></div>
+					<button class="addWork">Ajouter une photo</button>
+					<button class="delGallery">Supprimer la galerie</button>
+				</div>
+			</div>
+			<div class="secondModal">
+				<div class="secondModalLayout">
+					<button class="back">
+						<i class="fa-solid fa-arrow-left"></i>
+					</button>
+					<button class="closeSecondModal">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+					<h2>Ajout photo</h2>
+					<form action="#" method="post" id="sendImageForm">
+						<div class="addImageContainer">
+							<i class="fa-regular fa-image"></i>
+							<label id="uploadImageLabel" for="uploadImage">+ Ajouter photo</label>
+							<input type="file" id="uploadImage" />
+							<img id="imagePreview" />
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<label for="title" id="uploadTitle">Titre</label>
+						<input type="text" name="title" id="uploadTitleInput" />
+						<label for="category" id="categorySelectTitle">Catégorie</label>
+						<select name="category" id="categorySelect"></select>
+						<div class="separator"></div>
+						<button type="submit" class="validateButton" id="submitButton">Valider</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+		<!-- Mode édition-->		
     <div class="edit-mode">
       <button class="edit-button placeholder-button" disabled>
         <i class="fa-regular fa-pen-to-square"></i>
@@ -24,6 +69,7 @@
       </button>
 			<button class="edit-button publish-changes">publier les changements</button>
     </div>
+		<!-- End Mode édition-->
 		<div class="edit-mode-header">
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>

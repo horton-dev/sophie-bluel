@@ -6,11 +6,12 @@
 
 import { getAPIData } from "./utils/api.js";
 import { allWorks, allCategories } from "./utils/constants.js";
-import { generateWorksInGallery } from "./module/gallery.js";
+import { generateWorksInGallery, showWorksInModal } from "./module/gallery.js";
 import { displayCategoryFilterButtons } from "./module/filter.js";
 import { configureLoginButton } from "./module/auth.js";
 import { token } from "./utils/constants.js";
 import { activateEditMode } from "./module/ui.js";
+import { openModal, closeModals } from "./module/modal.js";
 
 /**
  * @description Initialise l'application en chargeant les projets, les catégories et en configurant les modales et les boutons.
@@ -34,7 +35,12 @@ async function initializeApplication() {
     // Configuration si l'utilisateur est authentifié
     if (token) {
       activateEditMode();        // Activation du mode édition
+      openModal();               // Configuration des modales
+      closeModals();             // Configuration des boutons de fermeture des modales
+      showWorksInModal();        // Affichage des travaux dans la modale
     } else {
+      // Configure les écouteurs d'événements sur les boutons de filtre
+    displayCategoryFilterButtons();
       
     }
 
@@ -42,8 +48,6 @@ async function initializeApplication() {
     // Génère et affiche les travaux dans la galerie
     generateWorksInGallery();
     
-    // Configure les écouteurs d'événements sur les boutons de filtre
-    displayCategoryFilterButtons();
 
     // Configure le bouton de déconnexion
     configureLoginButton();
