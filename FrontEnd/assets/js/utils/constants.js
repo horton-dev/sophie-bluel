@@ -8,3 +8,6 @@ export const allWorks = new Set();
 
 // Ensemble pour stocker toutes les catégories, évite les duplications
 export const allCategories = new Set();
+
+// Récupère le token d'accès à partir de la session
+export const token = sessionStorage.accessToken;
