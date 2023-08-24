@@ -364,7 +364,7 @@
 }
 .secondModalLayout #imageError{
   position: absolute;
-  top: 45%;
+  top: 46%;
   transform: translate(-50%, -50%);
   font-family: work sans;
   font-size: 12px;
@@ -380,13 +380,52 @@
   font-weight: 500;
   color: red;
 }
-.secondModalLayout .inputErrorSelect{
+.secondModalLayout .inputErrorcategoryError{
 top: 73%; 
 left: 26.5%;
 }
 
-.secondModalLayout .inputErrorTitle{
+.secondModalLayout .inputErrortitleError{
   position: absolute;
   top: 58%;
   left: 24%;
+}
+.secondModalLayout .inputErrorImage{
+  position: absolute;
+  top: 44%;
+  left: 50%;
+}
+
+.successMessage{
+  width: 300px;
+  height: 20px;
+  margin-top: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  font-family: "syne";
+  font-weight: 400;
+}
+.successMessage i{
+  position: absolute;
+  top: 13%;
+  left: 28%;
+  font-size: 22px;
+}
+.errorMessage{
+  width: 400px;
+  height: 30px;
+  margin-top: 2px;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  font-family: "syne";
+  font-weight: 400;
+  padding-left: 30px;
+}
+.errorMessage i{
+  position: absolute;
+  top: 12.5%;
+  left: 18%;
+  font-size: 30px;
 }

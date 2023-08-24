@@ -14,9 +14,11 @@ import { activateEditMode } from "./module/ui.js";
 import { openModal, closeModals, handleModalRedirection, populateSelectCategory, handleImageUpload } from "./module/modal.js";
 
 /**
- * @description Initialise l'application en chargeant les projets, les catégories et en configurant les modales et les boutons.
+ * @description Initialise l'application en chargeant les projets et les catégories depuis la base de données,
+ * en configurant les modales, les boutons, et d'autres fonctionnalités en fonction de l'état d'authentification de l'utilisateur.
  * @async
  * @function
+ * @throws {Error} Lève une erreur si le chargement des projets ou des catégories échoue.
  */
 async function initializeApplication() {
   try {
@@ -41,17 +43,13 @@ async function initializeApplication() {
       handleModalRedirection();  // Configuration des boutons de redirection dans la modale
       populateSelectCategory();  // Configuration du menu déroulant de sélection de catégorie
       handleImageUpload();       // Configuration du bouton d'upload d'image
-      
     } else {
       // Configure les écouteurs d'événements sur les boutons de filtre
-    displayCategoryFilterButtons();
-      
+      displayCategoryFilterButtons();
     }
-
 
     // Génère et affiche les travaux dans la galerie
     generateWorksInGallery();
-    
 
     // Configure le bouton de déconnexion
     configureLoginButton();
@@ -65,4 +63,3 @@ async function initializeApplication() {
 
 // Appelle la fonction d'initialisation au chargement de la page
 window.addEventListener('DOMContentLoaded', initializeApplication);
-// console.log(getAPIData('allWorks'));

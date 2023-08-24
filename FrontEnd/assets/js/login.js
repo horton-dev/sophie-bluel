@@ -8,6 +8,8 @@ import { handleLoginFormSubmit } from "./module/auth.js";
 
 // Vérification que le document est complètement chargé avant d'appeler la fonction
 document.addEventListener('DOMContentLoaded', () => {
-
+  /**
+   * @description Gère la soumission du formulaire de connexion, y compris la validation et l'authentification de l'utilisateur.
+   */
   handleLoginFormSubmit();
 });

@@ -3,11 +3,23 @@
  * Ces constantes peuvent être importées et utilisées dans différents modules pour maintenir un code organisé et modulaire.
  */
 
-// Ensemble pour stocker tous les travaux, évite les duplications
+/**
+ * @description Ensemble pour stocker tous les travaux, évite les duplications.
+ * @type {Set}
+ */
 export const allWorks = new Set();
 
-// Ensemble pour stocker toutes les catégories, évite les duplications
+/**
+ * @description Ensemble pour stocker toutes les catégories, évite les duplications.
+ * @type {Set}
+ */
 export const allCategories = new Set();
 
-// Récupère le token d'accès à partir de la session
+/**
+ * @description Récupère le token d'accès à partir de la session. Utile pour la gestion de l'authentification.
+ * @type {string}
+ */
 export const token = sessionStorage.accessToken;
+
+
+

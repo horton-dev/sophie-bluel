@@ -67,7 +67,7 @@ export async function handleLoginFormSubmit() {
         // Stocke le jeton d'accès dans la session de l'utilisateur
         sessionStorage.setItem("accessToken", data.token);
         // Redirige l'utilisateur vers la page d'accueil
-        window.location.href = `http://${window.location.hostname}:5500/`;
+        window.location.href = `http://${window.location.hostname}:5501/index.html`;
       } else {
         // Crée un élément HTML pour afficher le message d'erreur
         const error = document.createElement("p");

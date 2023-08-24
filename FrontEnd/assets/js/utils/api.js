@@ -8,6 +8,8 @@
  * @typedef {Object} APIModule
  * @property {function} getAPIData - Récupère les informations depuis la base de données.
  */
+
+// Importe le token utilisé pour l'autorisation dans les requêtes à l'API
 import { token } from "./constants.js";
 
 /**
