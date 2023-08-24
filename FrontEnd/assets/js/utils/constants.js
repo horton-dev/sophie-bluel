@@ -6,8 +6,8 @@
  */
 
 /**
- * @description Un ensemble qui stocke tous les travaux uniques pour éviter les duplications.
- * Il permet d'assurer que chaque travail est unique dans l'ensemble de l'application, en aidant à maintenir l'intégrité des données.
+ * @description Un ensemble qui stocke tous les projets uniques pour éviter les duplications.
+ * Il permet d'assurer que chaque projet est unique dans l'ensemble de l'application, en aidant à maintenir l'intégrité des données.
  * @type {Set<Object>}
  */
 export const allWorks = new Set();

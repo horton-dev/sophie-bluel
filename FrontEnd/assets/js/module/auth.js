@@ -1,22 +1,21 @@
 /**
- * Gère les fonctionnalités liées à l'authentification et la gestion des sessions utilisateur.
- * Ce module fournit des fonctionnalités pour gérer la soumission du formulaire de connexion,
- * configurer le bouton de déconnexion, et gérer la déconnexion de l'utilisateur.
+ * Module de gestion des fonctionnalités d'authentification et de sessions utilisateur.
+ * Il fournit les mécanismes pour gérer la soumission du formulaire de connexion, configurer le bouton de connexion/déconnexion,
+ * et gérer la connexion et la déconnexion de l'utilisateur.
  * @module auth
  */
 
 /**
  * @typedef {Object} AuthModule
- * @property {function} handleLoginFormSubmit - Gère la soumission du formulaire de connexion.
- * @property {function} configureLoginButton - Configure le bouton pour gérer la connexion/déconnexion de l'utilisateur.
+ * @property {function} handleLoginFormSubmit - Une méthode qui gère la soumission du formulaire de connexion, y compris la validation, la requête à l'API, et la gestion de la réponse. Elle assure une expérience utilisateur soignée lors de la connexion.
+ * @property {function} configureLoginButton - Une méthode qui configure le bouton pour gérer la connexion et la déconnexion de l'utilisateur, et gère l'affichage en fonction de l'état de connexion. Elle permet une interaction fluide avec l'état d'authentification de l'utilisateur.
  */
 
 /**
- * @description Gère la soumission du formulaire de connexion.
- * Récupère les informations d'identification saisies par l'utilisateur,
- * envoie une requête à l'API pour se connecter, et gère la réponse.
- * Si la connexion réussit, il stocke le jeton d'accès et redirige l'utilisateur.
- * Si la connexion échoue, il affiche un message d'erreur.
+ * @description Gère la soumission du formulaire de connexion, incluant la récupération des informations d'identification, l'envoi de la requête, et la gestion de la réponse.
+ * Si la connexion est réussie, stocke le jeton d'accès et redirige l'utilisateur.
+ * En cas d'échec, affiche un message d'erreur.
+ * 
  * @function
  * @async
  * @param {Event} e - L'événement de soumission du formulaire.
@@ -35,7 +34,7 @@ export async function handleLoginFormSubmit() {
     const password = document.getElementById("password").value;
 
     // Sélectionne l'élément HTML où afficher le message d'erreur
-    const connexion = document.querySelector(".connexion-message"); // Sélection spécifique
+    const connexion = document.querySelector(".connexion-message");
     const existingError = document.querySelector(".error-message");
 
     // Supprime le message d'erreur existant s'il y en a un
@@ -94,9 +93,10 @@ export async function handleLoginFormSubmit() {
 }
 
 /**
- * @description Configure le bouton pour gérer la connexion/déconnexion de l'utilisateur.
- * Si un utilisateur est connecté (token présent), affiche "Logout" et gère la déconnexion.
- * Sinon, affiche "Login" et redirige vers la page de connexion lorsqu'il est cliqué.
+ * @description Configure le bouton de connexion/déconnexion de l'utilisateur en fonction de son état de connexion.
+ * Si l'utilisateur est connecté (jeton présent), le bouton affiche "Logout" et gère la déconnexion.
+ * Sinon, il affiche "Login" et redirige vers la page de connexion lorsqu'il est cliqué.
+ * 
  * @function
  */
 export function configureLoginButton() {

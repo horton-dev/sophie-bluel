@@ -1,23 +1,25 @@
 /**
- * Gère les fonctionnalités de filtrage, y compris l'affichage des boutons de filtre et la configuration des événements de filtrage.
+ * Module de gestion des fonctionnalités de filtrage des projets dans la galerie. 
+ * Il prend en charge l'affichage des boutons de filtre par catégorie et la gestion des événements associés.
  * @module filter
  */
 
 /**
  * @typedef {Object} FilterModule
- * @property {function} displayCategoryFilterButtons - Affiche les boutons de filtre dans la galerie.
- * @property {function} setCategoryFilterEvent - Configure les événements de clic sur les boutons de filtre pour filtrer les travaux par catégorie.
+ * @property {function} displayCategoryFilterButtons - Une méthode qui affiche les boutons de filtre par catégorie dans la galerie. Elle permet une sélection rapide et facile des catégories à afficher.
+ * @property {function} setCategoryFilterEvent - Une méthode qui configure les événements de clic sur les boutons de filtre pour filtrer les projets par catégorie. Elle assure que l'interface utilisateur réagit correctement aux sélections de l'utilisateur.
  */
 
+// Importations de variables et de fonctions depuis différents fichiers pour le fonctionnement du module.
 import { allCategories } from "../utils/constants.js";
 import { generateWorksInGallery } from "./gallery.js";
 
-
 /**
- * @description Affiche les boutons de filtre dans la galerie, y compris une option "Tous" et un bouton pour chaque catégorie.
- * Chaque bouton est créé avec une classe "filter" et un attribut data-id correspondant à l'ID de la catégorie. 
+ * @description Crée et affiche les boutons de filtre dans la galerie, y compris une option "Tous" et un bouton pour chaque catégorie.
+ * Chaque bouton est assigné avec une classe "filter" et un attribut data-id correspondant à l'ID de la catégorie. 
  * Le bouton "Tous" a un ID de 0 et est actif par défaut.
- * Après avoir affiché tous les boutons, la fonction setFilterEvent est appelée pour configurer les écouteurs d'événements sur les boutons.
+ * Une fois tous les boutons affichés, la fonction setFilterEvent est appelée pour configurer les écouteurs d'événements sur ces boutons.
+ * 
  * @function
  * @requires allCategories - Un tableau d'objets représentant toutes les catégories, chaque objet doit avoir des propriétés 'id' et 'name'.
  */
@@ -34,7 +36,7 @@ export function displayCategoryFilterButtons() {
   allCategoriesFilterButton.dataset.id = 0;
   allCategoriesFilterButton.textContent = "Tous";
   // Ajoute le bouton de filtre "Tous" au fragment
-  buttonsFragment.appendChild(allCategoriesFilterButton);
+  buttonsFragment.append(allCategoriesFilterButton);
 
   // Parcoure et crée un bouton de filtre pour chaque catégorie dans la collection "allCategories"
   for (const category of allCategories) {
@@ -43,7 +45,7 @@ export function displayCategoryFilterButtons() {
     categoryFilterButton.dataset.id = category.id;
     categoryFilterButton.textContent = category.name;
     // Ajoute chaque bouton de catégorie au fragment
-    buttonsFragment.appendChild(categoryFilterButton);
+    buttonsFragment.append(categoryFilterButton);
   }
 
   // Ajoute le fragment complet, contenant tous les boutons de filtre, au conteneur de boutons de filtre dans le DOM
@@ -54,10 +56,11 @@ export function displayCategoryFilterButtons() {
 }
 
 /**
- * @description Configure les événements de clic sur les boutons de filtre pour filtrer les travaux par catégorie.
- * Cela suppose que chaque bouton de filtre ait une classe "filter" et contienne un attribut data-id avec l'ID de la catégorie correspondante.
- * Après avoir cliqué sur un bouton de filtre, la fonction generateWorksInGallery sera appelée avec l'ID de la catégorie sélectionnée,
+ * @description Configure les événements de clic sur les boutons de filtre pour filtrer les projets par catégorie.
+ * S'attend à ce que chaque bouton de filtre ait une classe "filter" et contienne un attribut data-id avec l'ID de la catégorie correspondante.
+ * Après avoir cliqué sur un bouton de filtre, la fonction generateWorksInGallery est appelée avec l'ID de la catégorie sélectionnée,
  * et le bouton cliqué sera mis en évidence en ajoutant la classe "active".
+ * 
  * @function
  */
 function setCategoryFilterEvent() {

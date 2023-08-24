@@ -11,13 +11,12 @@
  * @property {function} removeExistingErrors - Une méthode qui supprime les éléments d'erreur existants dans l'interface utilisateur. Elle parcourt une liste d'identifiants d'erreur spécifiques et supprime l'élément correspondant s'il existe dans le DOM. Cette méthode permet de nettoyer les messages d'erreur précédents et contribue à une expérience utilisateur plus propre et plus efficace.
  */
 
-
 /**
  * @description Active le mode d'édition dans l'interface utilisateur, un aspect essentiel de la gestion des contenus éditables.
  * Cette fonction prend en charge l'affichage des contrôles d'édition et la configuration des écouteurs d'événements pour les fenêtres modales associées. En activant ce mode, les utilisateurs peuvent accéder à des fonctionnalités d'édition avancées directement depuis l'interface, permettant des modifications en temps réel et une interaction utilisateur plus fluide et intuitive.
+ * 
  * @function
  */
-
 export function activateEditMode() {
   // Sélectionner l'élément de contrôle d'édition et les boutons associés
   const editionControl = document.querySelector('.edit-mode');
@@ -37,9 +36,9 @@ export function activateEditMode() {
 /**
  * @description Gère la suppression des messages d'erreur dans l'interface utilisateur pour une expérience plus propre.
  * Cette fonction parcourt une liste d'identifiants d'erreur spécifiques, tels que "titleError", "categoryError", "fileError", "successMessage" et " errorMessage" et supprime l'élément correspondant s'il existe dans le DOM. Cela permet de s'assurer que les erreurs précédentes ne gênent pas l'utilisateur et contribue à une interface plus ordonnée. La méthode est conçue pour être flexible et peut être étendue pour supporter d'autres types d'erreurs à l'avenir.
+ * 
  * @function
  */
-
 export function removeExistingErrors() {
   const errorIds = ["titleError", "categoryError", "fileError", "successMessage", "errorMessage"];
   

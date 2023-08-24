@@ -49,22 +49,18 @@ export async function getAPIData(dataType) {
 
 
 /**
- * @description Envoyez une requête DELETE à l'API pour supprimer un travail spécifique.
- * Cette fonction utilise l'authentification via un en-tête d'autorisation et nécessite un ID de travail pour identifier le travail à supprimer.
+ * @description Envoyez une requête DELETE à l'API pour supprimer un projet spécifique.
+ * Cette fonction utilise l'authentification via un en-tête d'autorisation et nécessite un ID de projet pour identifier le projet à supprimer.
  * Elle renvoie le code d'état de la réponse HTTP, qui peut être utilisé pour déterminer si l'opération a réussi.
  * 
  * @async
  * @function deleteWork
- * @param {string} workId - L'ID unique du travail à supprimer. Il doit s'agir d'une chaîne valide qui représente l'ID unique du travail.
+ * @param {string} workId - L'ID unique du projet à supprimer. Il doit s'agir d'une chaîne valide qui représente l'ID unique du projet.
  * @returns {Promise<number>} - Renvoie une promesse qui résout en un nombre représentant le code d'état de la réponse HTTP. Par exemple, 204 pour un succès sans contenu.
  * @throws {Error} Si la requête échoue (réponse non réussie), une erreur sera levée avec un message approprié.
- * @example
- * deleteWork("1234")
- *  .then(status => console.log(`Suppression réussie avec le code d'état : ${status}`))
- *  .catch(error => console.error(error));
- */
+  */
 export async function deleteWork(workId) {
-  // Construction de l'URL de l'API avec l'ID du travail spécifique à supprimer
+  // Construction de l'URL de l'API avec l'ID du projet spécifique à supprimer
   const apiUrl = `http://localhost:5678/api/works/${workId}`;
 
   // Configuration des options de la requête DELETE, y compris la méthode et les en-têtes
@@ -123,6 +119,7 @@ export async function addWork(formData) {
     return response.json();
   }
 
-  // Si la réponse n'est pas OK, vous pouvez lever une erreur ou gérer l'erreur comme vous le souhaitez
-  throw new Error('La création du travail a échoué.');
+  // Si la création du projet échoue (par exemple, la réponse de l'API n'est pas OK), une erreur est levée avec un message indiquant que la création du projet a échoué.
+throw new Error('La création du projet a échoué.');
+
 }

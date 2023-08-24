@@ -1,50 +1,53 @@
 /**
- * Gère l'affichage d'une galerie de travaux
+ * @description Gère l'affichage d'une galerie de projets, y compris la génération de la galerie, l'affichage des projets dans une fenêtre modale et la confirmation et le traitement de la suppression des projets.
+ * Le module fournit des fonctions pour gérer la galerie de projets sur le site Web, permettant une intégration fluide avec d'autres modules.
  * @module gallery
  */
 
 /**
  * @typedef {Object} GalleryModule
- * @property {function} generateWorksInGallery - Génère et affiche les travaux dans la galerie
+ * @property {function} generateWorksInGallery - Une méthode qui génère et affiche les projets dans la galerie en fonction d'un filtre de catégorie. Elle permet une présentation dynamique des œuvres selon la catégorie choisie.
+ * @property {function} showWorksInModal - Une méthode qui affiche les projets dans une galerie modale avec des options d'édition et de suppression. Elle offre une interface utilisateur pour la gestion des projets dans la galerie.
+ * @property {function} confirmDeleteWork - Une méthode qui confirme et traite la suppression d'un projet, y compris la gestion des codes d'erreur. Elle assure une expérience utilisateur soignée lors de la suppression d'œuvres.
  */
 
+/// Importations de variables et de fonctions depuis différents fichiers pour le fonctionnement du module.
 import { allWorks } from "../utils/constants.js";
 import { deleteWork } from "../utils/api.js";
 
 /**
- * @description Génère et affiche les travaux dans la galerie en fonction du filtre de catégorie spécifié.
- * Si aucun filtre n'est spécifié ou si le filtre est 0, tous les travaux seront affichés.
- * Chaque travail est représenté par un élément "figure" contenant une image et un titre.
+ * @description Génère et affiche les projets dans la galerie. Cette fonction prend un identifiant de catégorie en entrée et utilise ce filtre pour afficher uniquement les projets correspondants. Si aucun filtre n'est spécifié ou si le filtre est 0, tous les projets seront affichés. Chaque projets est représenté par un élément "figure" contenant une image et un titre. La galerie existante est d'abord effacée avant de rendre les nouveaux projets.
+ * 
  * @function
- * @param {number} [categoryFilter=0] - Identifiant de la catégorie pour filtrer les travaux. 0 signifie aucun filtre.
- * @requires allWorks - Un tableau d'objets représentant tous les travaux, chaque objet doit avoir des propriétés 'id', 'categoryId', 'imageUrl', et 'title'.
+ * @param {number} [categoryFilter=0] - Identifiant de la catégorie pour filtrer les projets. 0 signifie aucun filtre, et donc tous les projets seront affichés.
+ * @requires allWorks - Un tableau d'objets représentant tous les projets, chaque objet doit avoir des propriétés 'id', 'categoryId', 'imageUrl', et 'title'.
  */
 export function generateWorksInGallery(categoryFilter = 0) {
-  // Collection des travaux à afficher, initialement tous les travaux
+  // Collection des projets à afficher, initialement tous les projets
   let worksToDisplay = allWorks;
 
-  // Si un filtre de catégorie est spécifié, filtre les travaux par cette catégorie
+  // Si un filtre de catégorie est spécifié, filtre les projets par cette catégorie
   if (categoryFilter !== 0) {
     worksToDisplay = [...allWorks].filter((work) => work.categoryId === categoryFilter);
   }
 
-  // Sélectionne l'élément de la galerie dans le DOM pour insérer les travaux
+  // Sélectionne l'élément de la galerie dans le DOM pour insérer les projets
   const galleryContainerDiv = document.querySelector(".gallery");
   // Vide le contenu actuel de la galerie pour le nouveau rendu
   galleryContainerDiv.innerHTML = "";
 
-  // Parcoure et affiche chaque travail dans la collection filtrée
+  // Parcoure et affiche chaque projet dans la collection filtrée
   for (const individualWork of worksToDisplay) {
-    // Crée un élément "figure" pour chaque travail individuel
+    // Crée un élément "figure" pour chaque projet individuel
     const workFigureElement = document.createElement("figure");
     workFigureElement.id = "figure-" + individualWork.id;
 
-    // Crée un élément "img" pour l'image de chaque travail
+    // Crée un élément "img" pour l'image de chaque projet
     const workImageElement = document.createElement("img");
     workImageElement.src = individualWork.imageUrl;
     workImageElement.alt = individualWork.title;
 
-    // Crée un élément "figcaption" pour le titre de chaque travail
+    // Crée un élément "figcaption" pour le titre de chaque projet
     const workTitleElement = document.createElement("figcaption");
     workTitleElement.textContent = individualWork.title;
 
@@ -56,20 +59,19 @@ export function generateWorksInGallery(categoryFilter = 0) {
 }
 
 /**
- * @description Affiche les travaux dans une galerie modale et fournit des options pour éditer et supprimer les travaux.
- * Chaque travail est représenté par un élément "figure" contenant une image, un bouton d'édition et un bouton de suppression.
- * Le bouton de suppression a un gestionnaire d'événements qui confirme et traite la suppression, y compris la gestion des codes d'erreur.
+ * @description Affiche les projets dans une galerie modale et fournit des options pour éditer et supprimer les projets. Chaque projet est représenté par un élément "figure" contenant une image, un bouton d'édition, un bouton de déplacement et un bouton de suppression. Le bouton de suppression a un gestionnaire d'événements qui confirme et traite la suppression, y compris la gestion des codes d'erreur.
+ * 
  * @function
  * @requires allWorks - Un Set d'objets représentant tous les travaux, chaque objet doit avoir des propriétés 'id', 'imageUrl', et 'title'.
  */
 export function showWorksInModal() {
-  // Container qui contient les travaux dans la fenêtre modale
+  // Container qui contient les projets dans la fenêtre modale
   const worksContainer = document.querySelector('.worksContainer');
 
   // Vide le contenu de la fenêtre modale
   worksContainer.innerHTML = "";
 
-  // Parcourir chaque travail et afficher dans la fenêtre modale
+  // Parcourir chaque projet et afficher dans la fenêtre modale
   allWorks.forEach((work) => {
     const figureModal = document.createElement('figure');
     const figureImageModal = document.createElement('img');
@@ -134,7 +136,9 @@ export function showWorksInModal() {
 }
 
 /**
- * @description Confirme la suppression d'un travail et appelle la fonction de suppression.
+ * @description Confirme la suppression d'un projet et, si confirmé, appelle la fonction de suppression correspondante.
+ * La confirmation est demandée à l'utilisateur via une boîte de dialogue native.
+ * 
  * @async
  * @function
  * @param {string} workId - L'ID du travail à supprimer.

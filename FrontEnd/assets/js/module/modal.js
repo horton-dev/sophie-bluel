@@ -26,6 +26,7 @@ import { removeExistingErrors } from "./ui.js";
  * @description Ouvre la première fenêtre modale lorsqu'un utilisateur clique sur l'élément ayant la classe ".open-project-modal".
  * La fonction gère le comportement d'ouverture de la première modale, en ajustant les propriétés CSS nécessaires pour rendre les éléments visibles.
  * En outre, elle masque la deuxième modale (si elle est visible) et appelle la fonction `removeExistingErrors` pour effacer les erreurs existantes.
+ * 
  * @function
  * @requires .open-project-modal - L'élément HTML qui, lorsqu'il est cliqué, déclenche l'ouverture de la première fenêtre modale.
  * @requires .modalContainer - L'élément HTML contenant toutes les fenêtres modales.
@@ -58,13 +59,13 @@ export function openModal() {
   });
 }
 
-
 /**
  * @description Ferme les deux modales dans l'interface utilisateur, en offrant des moyens multiples pour quitter les modales.
  * La fonction met en place les écouteurs d'événements nécessaires pour fermer les modales :
  *   1. En cliquant sur les boutons de fermeture spécifiques dans chaque modale.
  *   2. En cliquant sur l'overlay en dehors des modales.
  * Lors de la fermeture, la fonction assure que tous les éléments nécessaires sont masqués, en restaurant l'état initial de l'interface utilisateur.
+ * 
  * @function
  */
 export function closeModals() {
@@ -103,7 +104,6 @@ export function closeModals() {
   });
 }
 
-
 /**
  * @description Gère la navigation entre la première et la deuxième modale de l'interface utilisateur, en assurant une transition en douceur entre les différentes étapes du processus d'ajout de travail.
  * Cette fonction met en place les écouteurs d'événements nécessaires pour :
@@ -111,6 +111,7 @@ export function closeModals() {
  *   2. Revenir à la première modale à partir de la deuxième en utilisant un bouton de retour.
  *   3. Gérer la logique de réinitialisation nécessaire lors de la navigation entre les modales.
  * La fonction organise l'interaction de l'utilisateur avec les modales, garantissant que l'interface utilisateur réagit de manière intuitive aux actions de l'utilisateur.
+ * 
  * @function
  */
 export function handleModalRedirection() {
@@ -120,7 +121,7 @@ export function handleModalRedirection() {
   const secondModalLayout = document.querySelector(".secondModalLayout");
   const backButton = document.querySelector(".back");
 
-  // Écouteur d'événements pour ouvrir la deuxième modale lorsque l'utilisateur clique sur "ajouter un travail"
+  // Écouteur d'événements pour ouvrir la deuxième modale lorsque l'utilisateur clique sur "Ajouter une photo"
   addWorkButton.addEventListener("click", () => {
     firstModalLayout.style.display = "none";
     secondModalLayout.style.display = "flex";
@@ -144,6 +145,7 @@ export function handleModalRedirection() {
  *   4. Utilise le nom de la catégorie comme texte affiché et l'ID de la catégorie comme valeur de l'élément 'option'.
  *   5. Insère chaque élément 'option' dans l'élément 'select', les rendant disponibles pour la sélection par l'utilisateur.
  * Cette fonction contribue à l'expérience utilisateur dynamique et adaptable en rendant les catégories disponibles pour l'ajout de projets de manière programmatique.
+ * 
  * @function
  * @requires allCategories - Un tableau d'objets représentant toutes les catégories, chaque objet doit avoir des propriétés 'id' et 'name'.
  */
@@ -153,8 +155,8 @@ export function populateSelectCategory() {
 
   // Crée et ajoute une première option vide
   const emptyOptionElement = document.createElement("option");
-  emptyOptionElement.textContent = ""; // Texte vide
-  emptyOptionElement.value = ""; // Valeur vide
+  emptyOptionElement.textContent = ""; 
+  emptyOptionElement.value = ""; 
   categorySelectElement.appendChild(emptyOptionElement);
 
   // Parcourt toutes les catégories disponibles dans la collection 'allCategories'
@@ -180,8 +182,9 @@ export function populateSelectCategory() {
  *   3. Valide le type de fichier (PNG/JPG) et la taille (4 Mo maximum), affichant des messages d'erreur si nécessaire.
  *   4. Si les validations réussissent, prévisualise l'image; sinon, affiche des messages d'erreur.
  *   5. Gère l'envoi du formulaire, avec des validations supplémentaires pour le titre et la catégorie, et le traitement des réponses.
- *   6. Met à jour l'interface utilisateur en fonction des résultats, y compris l'ajout d'une nouvelle œuvre d'art et l'affichage de messages de confirmation ou d'erreur.
+ *   6. Met à jour l'interface utilisateur en fonction des résultats, y compris l'ajout d'une nouvelle œuvre et l'affichage de messages de confirmation ou d'erreur.
  * La fonction est robuste et conçue pour offrir une expérience utilisateur cohérente et agréable tout au long du processus de téléchargement de l'image.
+ * 
  * @function
  */
 export function handleImageUpload() {
@@ -197,9 +200,6 @@ export function handleImageUpload() {
   };
   
   const addImageContainer = document.querySelector(selectors.addImageContainer);
-  const imagePreviewContainer = document.querySelector(selectors.imagePreviewContainer);
-  const imagePreview = document.querySelector(selectors.imagePreview);
-  const submitButton = document.querySelector(selectors.submitButton);
   const uploadTitleInput = document.querySelector(selectors.uploadTitleInput);
   const categorySelect = document.querySelector(selectors.categorySelect);
   
@@ -281,74 +281,72 @@ export function handleImageUpload() {
       }
   
       // Vérifier l'image
-if (!file) {
-  const imageError = document.createElement("p");
-  imageError.id = "fileError";
-  imageError.className = "inputErrorImage";
-  imageError.innerText = "*Une image est requise";
-  imageError.style.textAlign = "center";
-  imageError.style.color = "red";
-  addImageContainer.parentNode.append(imageError);
-  hasError = true;
-}
-
+      if (!file) {
+        const imageError = document.createElement("p");
+        imageError.id = "fileError";
+        imageError.className = "inputErrorImage";
+        imageError.innerText = "*Une image est requise";
+        imageError.style.textAlign = "center";
+        imageError.style.color = "red";
+        addImageContainer.parentNode.append(imageError);
+        hasError = true;
+      }
   
       // Si une erreur est détectée, arrêter le traitement
       if (hasError) return;
   
-// Traitement de l'envoi du formulaire
-try {
-  const formData = new FormData();
-  formData.append("image", file);
-  formData.append("title", uploadTitleInput.value);
-  formData.append("category", categorySelect.value);
+      // Traitement de l'envoi du formulaire
+      try {
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("title", uploadTitleInput.value);
+        formData.append("category", categorySelect.value);
 
-  // Envoi des données du formulaire
-  const newWork = await addWork(formData);
-  allWorks.add(newWork);
-  showWorksInModal();
-  generateWorksInGallery();
+        // Envoi des données du formulaire
+        const newWork = await addWork(formData);
+        allWorks.add(newWork);
+        showWorksInModal();
+        generateWorksInGallery();
 
-  // Appel de la fonction de réinitialisation
-  backToFirstModal();
-  
-  // Message de confirmation
-  const container = document.querySelector('#sendImageForm');
-  const message = document.createElement('button');
-  message.className = "successMessage";
-  message.id = "successMessage";
-  message.innerHTML = `
-  <i class="fa-solid fa-circle-check"></i>
-  Votre projet a bien été ajouté
-  `;
-  message.style.color = "green"; // Pour le style, vous pouvez aussi utiliser une classe CSS
-  container.insertBefore(message, container.firstChild);
-} catch (error) {
-  console.error(
-    "Une erreur s'est produite lors de l'envoi du formulaire:",
-    error
-  );
-  // Logique supplémentaire pour informer l'utilisateur
-  const container = document.querySelector('#sendImageForm');
-  const message = document.createElement('button');
-  message.className = "errorMessage";
-  message.id = "errorMessage";
-  message.innerHTML = `
-  <i class="fa-solid fa-triangle-exclamation"></i>
-  Une erreur s'est produite lors de l'ajout de votre projet. Veuillez réessayer.
-  `;
-  message.style.color = "red"; // Pour le style, vous pouvez aussi utiliser une classe CSS
-  container.insertBefore(message, container.firstChild);
+        // Appel de la fonction de réinitialisation
+        backToFirstModal();
+        
+        // Message de confirmation
+        const container = document.querySelector('#sendImageForm');
+        const message = document.createElement('button');
+        message.className = "successMessage";
+        message.id = "successMessage";
+        message.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i>
+        Votre projet a bien été ajouté
+        `;
+        message.style.color = "green"; // Pour le style, vous pouvez aussi utiliser une classe CSS
+        container.insertBefore(message, container.firstChild);
+      } catch (error) {
+        console.error(
+          "Une erreur s'est produite lors de l'envoi du formulaire:",
+          error
+        );
+      // Logique supplémentaire pour informer l'utilisateur
+      const container = document.querySelector('#sendImageForm');
+      const message = document.createElement('button');
+      message.className = "errorMessage";
+      message.id = "errorMessage";
+      message.innerHTML = `
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Une erreur s'est produite lors de l'ajout de votre projet. Veuillez réessayer.
+      `;
+      message.style.color = "red";
+      container.insertBefore(message, container.firstChild);
+    }
+  });
 }
-
-
-    });
-  }
 
 /**
  * @description Réinitialise et revient à la première fenêtre modale dans le flux d'ajout d'image.
  * Cette fonction est utilisée pour remettre à zéro l'interface d'ajout d'image, en cachant l'aperçu de l'image et en réaffichant le conteneur d'ajout d'image initial. Elle supprime également les erreurs existantes, réinitialise le formulaire et révoque l'URL de l'objet d'image.
  * Conçue pour être appelée lorsqu'un utilisateur souhaite recommencer le processus d'ajout d'image depuis le début, cette fonction contribue à une expérience utilisateur fluide et cohérente.
+ * 
  * @function
  * @param {string} imageUrl - L'URL de l'objet de l'image à révoquer, permettant la libération des ressources.
  */
