@@ -1,3 +1,21 @@
+/**
+ * Module de gestion des fenêtres modales pour l'interaction avec l'utilisateur.
+ * Il fournit des fonctionnalités pour ouvrir, fermer et naviguer entre différentes fenêtres modales, y compris la manipulation dynamique des éléments de la liste déroulante et la gestion du téléchargement d'images.
+ * Les fonctionnalités incluent l'ouverture de la première fenêtre modale, la fermeture de toutes les fenêtres modales, la navigation entre les fenêtres modales, la population dynamique des catégories, le téléchargement d'images et le retour à la première fenêtre modale.
+ * @module modal
+ */
+
+/**
+ * @typedef {Object} ModalModule
+ * @property {function} openModal - Une méthode qui gère l'ouverture de la première fenêtre modale. Elle déclenche l'affichage des éléments associés dans le DOM, permettant une interaction utilisateur fluide.
+ * @property {function} closeModals - Une méthode qui ferme à la fois la première et la deuxième fenêtres modales. Elle gère les boutons de fermeture et assure une expérience utilisateur soignée.
+ * @property {function} handleModalRedirection - Une méthode qui gère la navigation entre la première et la deuxième fenêtre modale. Elle configure les écouteurs d'événements pour le passage entre les fenêtres modales.
+ * @property {function} populateSelectCategory - Une méthode qui récupère dynamiquement les catégories et les ajoute à un élément de sélection HTML. Elle facilite le choix des catégories lors de l'ajout d'un projet.
+ * @property {function} handleImageUpload - Une méthode qui gère le téléchargement d'images dans la fenêtre modale. Elle permet le téléchargement et la prévisualisation des images avant leur soumission.
+ * @property {function} backToFirstModal - Une méthode qui permet de revenir à la première fenêtre modale. Elle offre une navigation fluide entre différentes sections de l'interface utilisateur.
+ */
+
+// Importations de variables et de fonctions depuis différents fichiers pour le fonctionnement du module.
 import { allCategories } from "../utils/constants.js";
 import { addWork } from "../utils/api.js";
 import { allWorks } from "../utils/constants.js";
@@ -5,37 +23,52 @@ import { showWorksInModal, generateWorksInGallery } from "./gallery.js";
 import { removeExistingErrors } from "./ui.js";
 
 /**
- * @description Ouvre la première fenêtre modale lorsqu'un élément "pushModal" est cliqué.
- * Cette fonction s'attend à ce que les éléments "pushModal", "modalContainer" et "firstModal" soient disponibles dans le DOM ou passés en tant que paramètres.
- * Lorsque l'élément "pushModal" est cliqué, la propriété "display" de "modalContainer" est définie sur "flex" et la propriété "display" de "firstModal" est définie sur "flex" pour les afficher.
+ * @description Ouvre la première fenêtre modale lorsqu'un utilisateur clique sur l'élément ayant la classe ".open-project-modal".
+ * La fonction gère le comportement d'ouverture de la première modale, en ajustant les propriétés CSS nécessaires pour rendre les éléments visibles.
+ * En outre, elle masque la deuxième modale (si elle est visible) et appelle la fonction `removeExistingErrors` pour effacer les erreurs existantes.
  * @function
- * @requires openProjectModal - L'élément HTML qui, lorsqu'il est cliqué, déclenche l'ouverture de la première fenêtre modale.
- * @requires modalContainer - L'élément HTML qui contient toutes les fenêtres modales.
- * @requires firstModal - La première fenêtre modale à afficher.
+ * @requires .open-project-modal - L'élément HTML qui, lorsqu'il est cliqué, déclenche l'ouverture de la première fenêtre modale.
+ * @requires .modalContainer - L'élément HTML contenant toutes les fenêtres modales.
+ * @requires .firstModalLayout - L'élément HTML représentant la première fenêtre modale.
+ * @requires .secondModalLayout - L'élément HTML représentant la deuxième fenêtre modale.
+ * @requires .overlay - L'élément HTML représentant l'arrière-plan semi-transparent derrière les modales.
  */
 export function openModal() {
-  // Assurez-vous que les éléments "pushModal", "modalContainer", et "firstModal" sont sélectionnés dans cette fonction ou passez-les en tant que paramètres
+  // Sélectionne l'élément qui déclenchera l'ouverture de la première modale
   const openProjectModal = document.querySelector(".open-project-modal");
+
+  // Sélectionne les éléments nécessaires pour contrôler l'affichage des modales et de l'overlay
   const modalContainer = document.querySelector(".modalContainer");
   const firstModalLayout = document.querySelector(".firstModalLayout");
   const secondModalLayout = document.querySelector(".secondModalLayout");
   const overlay = document.querySelector(".overlay");
 
+  // Définit un écouteur d'événements pour le clic sur "openProjectModal"
   openProjectModal.addEventListener("click", () => {
+    // Affiche l'overlay et la première modale
     overlay.style.display = "block";
     modalContainer.style.display = "block";
-    firstModalLayout.style.display = `flex`;
-    secondModalLayout.style.display = `none`;
+    firstModalLayout.style.display = "flex";
+
+    // Cache la deuxième modale, si elle est visible
+    secondModalLayout.style.display = "none";
+
+    // Appelle la fonction `removeExistingErrors` pour effacer les erreurs existantes
     removeExistingErrors();
   });
 }
 
+
 /**
+ * @description Ferme les deux modales dans l'interface utilisateur, en offrant des moyens multiples pour quitter les modales.
+ * La fonction met en place les écouteurs d'événements nécessaires pour fermer les modales :
+ *   1. En cliquant sur les boutons de fermeture spécifiques dans chaque modale.
+ *   2. En cliquant sur l'overlay en dehors des modales.
+ * Lors de la fermeture, la fonction assure que tous les éléments nécessaires sont masqués, en restaurant l'état initial de l'interface utilisateur.
  * @function
- * @description Ferme à la fois la première et la deuxième modales.
- * Cette fonction est utilisée comme gestionnaire d'événements pour les boutons de fermeture des modales.
  */
 export function closeModals() {
+  // Sélection des éléments nécessaires pour contrôler la fermeture des modales
   const closeFirstModals = document.querySelectorAll(".closeFirstModal");
   const closeSecondModals = document.querySelectorAll(".closeSecondModal");
   const modalContainer = document.querySelector(".modalContainer");
@@ -43,22 +76,25 @@ export function closeModals() {
   const secondModalLayout = document.querySelector(".secondModalLayout");
   const overlay = document.querySelector(".overlay");
 
+  // Écouteur d'événements pour fermer la première modale, en cachant tous les éléments connexes
   closeFirstModals.forEach((closeFirstModal) => {
     closeFirstModal.addEventListener("click", () => {
       modalContainer.style.display = "none";
-      firstModalLayout.style.display = `none`;
+      firstModalLayout.style.display = "none";
       overlay.style.display = "none";
     });
   });
 
+  // Écouteur d'événements pour fermer la deuxième modale, en cachant tous les éléments connexes
   closeSecondModals.forEach((closeSecondModal) => {
     closeSecondModal.addEventListener("click", () => {
       overlay.style.display = "none";
       modalContainer.style.display = "none";
-      secondModalLayout.style.display = `none`;
+      secondModalLayout.style.display = "none";
     });
   });
 
+  // Écouteur d'événements pour fermer les modales en cliquant sur l'overlay
   overlay.addEventListener("click", () => {
     overlay.style.display = "none";
     modalContainer.style.display = "none";
@@ -67,38 +103,47 @@ export function closeModals() {
   });
 }
 
+
 /**
- * @description Gère la navigation entre la première et la deuxième modale, ainsi que la fermeture des modales.
- * Cette fonction définit les écouteurs d'événements pour le passage entre les modales et la fermeture des modales.
+ * @description Gère la navigation entre la première et la deuxième modale de l'interface utilisateur, en assurant une transition en douceur entre les différentes étapes du processus d'ajout de travail.
+ * Cette fonction met en place les écouteurs d'événements nécessaires pour :
+ *   1. Naviguer de la première à la deuxième modale lors de l'ajout d'un travail.
+ *   2. Revenir à la première modale à partir de la deuxième en utilisant un bouton de retour.
+ *   3. Gérer la logique de réinitialisation nécessaire lors de la navigation entre les modales.
+ * La fonction organise l'interaction de l'utilisateur avec les modales, garantissant que l'interface utilisateur réagit de manière intuitive aux actions de l'utilisateur.
  * @function
  */
-
 export function handleModalRedirection() {
-  // Sélectionne les boutons pour ajouter un travail et fermer les modales
+  // Sélectionne les éléments HTML nécessaires pour contrôler la navigation entre les modales
   const addWorkButton = document.querySelector(".addWork");
   const firstModalLayout = document.querySelector(".firstModalLayout");
   const secondModalLayout = document.querySelector(".secondModalLayout");
   const backButton = document.querySelector(".back");
 
-  // Écouteur d'événements pour passer de la première modale à la deuxième modale
+  // Écouteur d'événements pour ouvrir la deuxième modale lorsque l'utilisateur clique sur "ajouter un travail"
   addWorkButton.addEventListener("click", () => {
     firstModalLayout.style.display = "none";
     secondModalLayout.style.display = "flex";
   });
 
-  // Écouteur d'événements pour le bouton back dans la deuxième modale
-
+  // Écouteur d'événements pour revenir à la première modale lors du clic sur le bouton de retour dans la deuxième modale
   backButton.addEventListener("click", () => {
     firstModalLayout.style.display = "flex";
     secondModalLayout.style.display = "none";
-    backToFirstModal();
+    backToFirstModal(); // Appel à la fonction de réinitialisation pour effacer les données du formulaire
   });
 }
 
 /**
- * @description Récupère dynamiquement les catégories et les ajoute à un élément de sélection HTML pour l'ajout de projet.
- * Cette fonction parcourt la collection 'allCategories' et crée dynamiquement des éléments 'option' pour chaque catégorie.
- * Chaque élément 'option' affiche le nom de la catégorie et a sa valeur définie comme l'ID de la catégorie.
+ * @description Génère et ajoute dynamiquement les options de catégorie à un élément de sélection HTML pour l'ajout de projets.
+ * Cette fonction joue un rôle crucial dans l'interface utilisateur en permettant aux utilisateurs de choisir parmi les catégories existantes lors de l'ajout d'un nouveau projet.
+ * Elle effectue les actions suivantes :
+ *   1. Récupère l'élément 'select' de l'interface utilisateur qui héberge les options de catégorie.
+ *   2. Ajoute une option vide en tant que choix par défaut.
+ *   3. Parcourt la collection 'allCategories', transformant chaque catégorie en un élément 'option'.
+ *   4. Utilise le nom de la catégorie comme texte affiché et l'ID de la catégorie comme valeur de l'élément 'option'.
+ *   5. Insère chaque élément 'option' dans l'élément 'select', les rendant disponibles pour la sélection par l'utilisateur.
+ * Cette fonction contribue à l'expérience utilisateur dynamique et adaptable en rendant les catégories disponibles pour l'ajout de projets de manière programmatique.
  * @function
  * @requires allCategories - Un tableau d'objets représentant toutes les catégories, chaque objet doit avoir des propriétés 'id' et 'name'.
  */
@@ -129,15 +174,15 @@ export function populateSelectCategory() {
 }
 
 /**
- * @description Gère le téléchargement d'une image en exécutant les tâches suivantes :
- *   1. Récupère les éléments HTML nécessaires pour le téléchargement et l'affichage.
- *   2. Écoute les changements sur l'input de type fichier pour sélectionner une image.
- *   3. Valide le type et la taille du fichier sélectionné (PNG/JPG, 4 Mo maximum).
- *   4. Prévisualise l'image si les validations réussissent, sinon affiche des messages d'erreur.
- *   5. Gère l'envoi du formulaire associé, en incluant des validations supplémentaires pour le titre et la catégorie.
- *   6. Traite les réponses et met à jour l'interface utilisateur en conséquence.
+ * @description Gère le téléchargement d'une image dans l'application en exécutant les étapes suivantes:
+ *   1. Récupère les éléments HTML nécessaires pour interagir avec l'utilisateur lors du téléchargement et de l'affichage de l'image.
+ *   2. Écoute les changements sur l'élément d'entrée de type fichier, déclenchant la sélection d'une image.
+ *   3. Valide le type de fichier (PNG/JPG) et la taille (4 Mo maximum), affichant des messages d'erreur si nécessaire.
+ *   4. Si les validations réussissent, prévisualise l'image; sinon, affiche des messages d'erreur.
+ *   5. Gère l'envoi du formulaire, avec des validations supplémentaires pour le titre et la catégorie, et le traitement des réponses.
+ *   6. Met à jour l'interface utilisateur en fonction des résultats, y compris l'ajout d'une nouvelle œuvre d'art et l'affichage de messages de confirmation ou d'erreur.
+ * La fonction est robuste et conçue pour offrir une expérience utilisateur cohérente et agréable tout au long du processus de téléchargement de l'image.
  * @function
- * @exports
  */
 export function handleImageUpload() {
   // Éléments HTML pour l'interaction utilisateur
@@ -299,7 +344,14 @@ try {
 
     });
   }
-  
+
+/**
+ * @description Réinitialise et revient à la première fenêtre modale dans le flux d'ajout d'image.
+ * Cette fonction est utilisée pour remettre à zéro l'interface d'ajout d'image, en cachant l'aperçu de l'image et en réaffichant le conteneur d'ajout d'image initial. Elle supprime également les erreurs existantes, réinitialise le formulaire et révoque l'URL de l'objet d'image.
+ * Conçue pour être appelée lorsqu'un utilisateur souhaite recommencer le processus d'ajout d'image depuis le début, cette fonction contribue à une expérience utilisateur fluide et cohérente.
+ * @function
+ * @param {string} imageUrl - L'URL de l'objet de l'image à révoquer, permettant la libération des ressources.
+ */
 export function backToFirstModal(imageUrl) {
     // Éléments HTML pour la réinitialisation
     const imagePreviewContainer = document.querySelector(".imagePreviewContainer");
@@ -316,6 +368,5 @@ export function backToFirstModal(imageUrl) {
     submitButton.style.backgroundColor = "";
     URL.revokeObjectURL(imageUrl);
     document.getElementById("sendImageForm").reset();
-
 }
   
