@@ -22,10 +22,11 @@ export class WorkGalleryController {
 
   // Méthode pour mettre à jour la vue de la galerie
   updateGalleryView(works) {
-    this.model.clearWorks();
-    this.view.renderGallery(works);
+    const newModel = new WorkGalleryModel(); // Création d'un nouveau modèle
     works.forEach(work => {
-      this.model.addWork(work);
+      newModel.addWork(work); // Ajout des œuvres au nouveau modèle
     });
+    this.model = newModel; // Mise à jour de la référence du modèle
+    this.view.renderGallery(works); // Mise à jour de la vue
   }
 }
