@@ -1,0 +1,17 @@
+{
+  "errors": {
+      "api.defaultMessage": "Une erreur s'est produite lors de la communication avec le serveur.",
+      "API_GALLERY_FETCH_ERROR": "Échec de la récupération de la galerie depuis le serveur.",
+      "default": "Une erreur inattendue s'est produite.",
+      "gallery.loadError": "Impossible de charger la galerie. Veuillez réessayer plus tard.",
+      "categories.loadError": "Erreur lors du chargement des catégories. Veuillez réessayer ultérieurement.",
+      "filter.actionError": "Une erreur est survenue lors du filtrage des œuvres.",
+      "filterService.fetchError": "Impossible de récupérer les catégories."
+  },
+  "gallery": {
+    "noItems": "Aucune œuvre trouvée."
+  },
+  "categories": {
+    "all": "Tous"
+  }
+}
