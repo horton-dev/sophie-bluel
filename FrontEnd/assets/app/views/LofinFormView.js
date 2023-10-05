@@ -1,3 +1,5 @@
+
+
 // Vue pour le formulaire de connexion
 export class LoginFormView {
 
@@ -11,3 +13,4 @@ export class LoginFormView {
     connexion.insertBefore(error, connexion.lastElementChild);
   }
 }
+

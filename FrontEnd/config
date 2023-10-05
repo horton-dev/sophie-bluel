@@ -1,0 +1,70 @@
+assets/
+│
+├── app/                                    
+│   │
+│   ├── controllers/                        
+│   │   │
+│   │   ├── FilterController.js             
+│   │   ├── LoginFormController.js          
+│   │   ├── ModalController.js              
+│   │   ├── UserDashboardController.js      
+│   │   └── WorkGalleryController.js        
+│   │
+│   ├── core/                               
+│   │   │     
+│   │   ├── constant.js                     
+│   │   └── erroHandler.js                  
+│   │ 
+│   ├── locales/                
+│   │   │
+│   │   ├── en.json      
+│   │   ├── fr.json    
+│   │   └── languageLoader.js
+│   │  
+│   ├── models/                
+│   │   │
+│   │   ├── FilterModels.js      
+│   │   ├── LoginFormModel.js
+│   │   ├── ModalModel.js
+│   │   ├── UserDashboardModel.js        
+│   │   └── WorkGalleryModel.js
+│   │ 
+│   ├── services/                
+│   │   │   
+│   │   └── layoutService.js
+│   │
+│   ├── utils/                
+│   │   │
+│   │   ├── apiService.js      
+│   │   ├── CategoriesAPI.js    
+│   │   └── GalleryAPI.js
+│   │ 
+│   ├── views/                
+│   │   │
+│   │   ├── addPictureView.js      
+│   │   ├── FilterView.js
+│   │   ├── GalleryModalView.js
+│   │   ├── LoginFormView.js
+│   │   ├── ModalView.js
+│   │   ├── UserDashboardView.js        
+│   │   └── WorkGalleryView.js  
+│   │
+│   ├── login.js          
+│   └── main.js          
+│
+├── icons/                           
+│
+├── images/                  
+│
+└── styles/                  
+    │                       
+    ├── modal.css    
+    ├── style.css             
+    └── userDashboard.css           
+                 
+
+footer.html
+header.html
+index.html
+login.html
+

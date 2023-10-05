@@ -1,5 +1,6 @@
 import { UserDashboardView } from '../views/UserDashboardView.js';
 
+
 export class UserDashboardController {
   constructor() {
     this.view = new UserDashboardView();
@@ -7,7 +8,7 @@ export class UserDashboardController {
 
   init() {
     // Créer les boutons
-    const editButton = this.view.createEditButton('modifyButton', 'Mode édition');
+    const editButton = this.view.createButtonWithIcon('modifyButton', 'Mode édition', 'fa-edit');
     const publishButton = this.view.createPublishButton();
 
     // Créer la div qui contiendra les boutons
@@ -31,12 +32,13 @@ export class UserDashboardController {
 
     // Ajouter les autre buttons au Dom
     const intro = document.getElementById('introFigure');
-    const modifyButtonIntro = this.view.createEditButton('modifyButtonIntro', 'Modifier');
+    const modifyButtonIntro = this.view.createButtonWithIcon('modifyButtonIntro', 'Modifier', 'fa-edit');
     intro.append(modifyButtonIntro);
 
     const titleGallery = document.getElementById('titleGallery');
-    const modifyButtonTitle = this.view.createEditButton('openModal', 'Modifier');
+    const modifyButtonTitle = this.view.createButtonWithIcon('openModal', 'Modifier', 'fa-edit');
 
     titleGallery.append(modifyButtonTitle);
+
   }
 }
