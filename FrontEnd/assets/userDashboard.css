@@ -1,12 +1,11 @@
 .button-container {
   position: fixed;
   width: 100%;
+  height: 59px;
   top: 0;
   left: 0;
   background: black;
-  height: 20px;
   text-align: center;
-  padding: 20px;
 }
 
 #modifyButton {
@@ -20,14 +19,18 @@
 }
 
 .publish-button {
+  width: 216px;
+  height: 38px;
   background: white;
   color: black;
-  padding: 5px 20px;
+  margin: 11px 0;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 15px;
   font-weight: bold;
+  font-family: 'Work Sans';
+  font-weight: 500;
 }
 
 #modifyButtonIntro {
