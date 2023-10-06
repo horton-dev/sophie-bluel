@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>views/galleryModalView.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AuthController.html">AuthController</a><ul class='methods'><li data-type='method'><a href="AuthController.html#handleClick">handleClick</a></li><li data-type='method'><a href="AuthController.html#init">init</a></li></ul></li><li><a href="FilterController.html">FilterController</a><ul class='methods'><li data-type='method'><a href="FilterController.html#bindEvents">bindEvents</a></li><li data-type='method'><a href="FilterController.html#handleCategoryFilter">handleCategoryFilter</a></li><li data-type='method'><a href="FilterController.html#initFilter">initFilter</a></li></ul></li><li><a href="FilterModel.html">FilterModel</a><ul class='methods'><li data-type='method'><a href="FilterModel.html#filterWorksByCategory">filterWorksByCategory</a></li><li data-type='method'><a href="FilterModel.html#init">init</a></li></ul></li><li><a href="FilterView.html">FilterView</a><ul class='methods'><li data-type='method'><a href="FilterView.html#bindCategoryClick">bindCategoryClick</a></li><li data-type='method'><a href="FilterView.html#createCategoryButton">createCategoryButton</a></li><li data-type='method'><a href="FilterView.html#renderCategoryFilters">renderCategoryFilters</a></li><li data-type='method'><a href="FilterView.html#setActiveCategory">setActiveCategory</a></li></ul></li><li><a href="GalleryModalView.html">GalleryModalView</a><ul class='methods'><li data-type='method'><a href="GalleryModalView.html#attachBackToGalleryListener">attachBackToGalleryListener</a></li><li data-type='method'><a href="GalleryModalView.html#attachOpenModalListener">attachOpenModalListener</a></li><li data-type='method'><a href="GalleryModalView.html#attachOverlayListener">attachOverlayListener</a></li><li data-type='method'><a href="GalleryModalView.html#backToGallery">backToGallery</a></li><li data-type='method'><a href="GalleryModalView.html#closeModal">closeModal</a></li><li data-type='method'><a href="GalleryModalView.html#createElement">createElement</a></li><li data-type='method'><a href="GalleryModalView.html#initializeEventListeners">initializeEventListeners</a></li><li data-type='method'><a href="GalleryModalView.html#initializeImagePreview">initializeImagePreview</a></li><li data-type='method'><a href="GalleryModalView.html#loadAddPicture">loadAddPicture</a></li><li data-type='method'><a href="GalleryModalView.html#loadAddPictureModal">loadAddPictureModal</a></li><li data-type='method'><a href="GalleryModalView.html#loadGalleryModal">loadGalleryModal</a></li><li data-type='method'><a href="GalleryModalView.html#openModal">openModal</a></li><li data-type='method'><a href="GalleryModalView.html#populateCategories">populateCategories</a></li><li data-type='method'><a href="GalleryModalView.html#showWorks">showWorks</a></li></ul></li><li><a href="LoginFormModel.html">LoginFormModel</a><ul class='methods'><li data-type='method'><a href="LoginFormModel.html#emailValidityCheck">emailValidityCheck</a></li><li data-type='method'><a href="LoginFormModel.html#loginUser">loginUser</a></li></ul></li><li><a href="LoginFormView.html">LoginFormView</a><ul class='methods'><li data-type='method'><a href="LoginFormView.html#displayLoginError">displayLoginError</a></li></ul></li><li><a href="ModalController.html">ModalController</a><ul class='methods'><li data-type='method'><a href="ModalController.html#initModal">initModal</a></li><li data-type='method'><a href="ModalController.html#initializeAndShowWorks">initializeAndShowWorks</a></li></ul></li><li><a href="ModalModel.html">ModalModel</a><ul class='methods'><li data-type='method'><a href="ModalModel.html#clearCurrentModal">clearCurrentModal</a></li><li data-type='method'><a href="ModalModel.html#setCurrentModal">setCurrentModal</a></li></ul></li><li><a href="UserDashboardController.html">UserDashboardController</a><ul class='methods'><li data-type='method'><a href="UserDashboardController.html#init">init</a></li></ul></li><li><a href="UserDashboardView.html">UserDashboardView</a><ul class='methods'><li data-type='method'><a href="UserDashboardView.html#createButtonWithIcon">createButtonWithIcon</a></li><li data-type='method'><a href="UserDashboardView.html#createPublishButton">createPublishButton</a></li></ul></li><li><a href="WorkGalleryController.html">WorkGalleryController</a><ul class='methods'><li data-type='method'><a href="WorkGalleryController.html#initGallery">initGallery</a></li><li data-type='method'><a href="WorkGalleryController.html#updateGalleryView">updateGalleryView</a></li></ul></li><li><a href="WorkGalleryModel.html">WorkGalleryModel</a><ul class='methods'><li data-type='method'><a href="WorkGalleryModel.html#addWork">addWork</a></li><li data-type='method'><a href="WorkGalleryModel.html#clearWorks">clearWorks</a></li><li data-type='method'><a href="WorkGalleryModel.html#getWorks">getWorks</a></li><li data-type='method'><a href="WorkGalleryModel.html#removeWork">removeWork</a></li></ul></li><li><a href="WorkGalleryView.html">WorkGalleryView</a><ul class='methods'><li data-type='method'><a href="WorkGalleryView.html#clearGallery">clearGallery</a></li><li data-type='method'><a href="WorkGalleryView.html#createWorkElement">createWorkElement</a></li><li data-type='method'><a href="WorkGalleryView.html#renderGallery">renderGallery</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Login.html">Login</a><ul class='methods'><li data-type='method'><a href="module-Login.html#~initLoginForm">initLoginForm</a></li><li data-type='method'><a href="module-Login.html#~initializeLoginPage">initializeLoginPage</a></li></ul></li><li><a href="module-Main.html">Main</a><ul class='methods'><li data-type='method'><a href="module-Main.html#~initializeApplication">initializeApplication</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ACCESS_TOKEN">ACCESS_TOKEN</a></li><li><a href="global.html#BASE_URL">BASE_URL</a></li><li><a href="global.html#Messages">Messages</a></li><li><a href="global.html#apiFetch">apiFetch</a></li><li><a href="global.html#cachedContents">cachedContents</a></li><li><a href="global.html#categoriesNewSet">categoriesNewSet</a></li><li><a href="global.html#displayErrorOnDOM">displayErrorOnDOM</a></li><li><a href="global.html#fetchCategories">fetchCategories</a></li><li><a href="global.html#fetchGallery">fetchGallery</a></li><li><a href="global.html#filterContainer">filterContainer</a></li><li><a href="global.html#galleryNewSet">galleryNewSet</a></li><li><a href="global.html#getErrorMessage">getErrorMessage</a></li><li><a href="global.html#getMessage">getMessage</a></li><li><a href="global.html#getPreferredLanguage">getPreferredLanguage</a></li><li><a href="global.html#initLogin">initLogin</a></li><li><a href="global.html#initializeTextResources">initializeTextResources</a></li><li><a href="global.html#loadContentForLanguage">loadContentForLanguage</a></li><li><a href="global.html#loadHeaderFooter">loadHeaderFooter</a></li><li><a href="global.html#logError">logError</a></li><li><a href="global.html#showAlertWithoutDuplication">showAlertWithoutDuplication</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">views/galleryModalView.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { WorkGalleryModel } from '../models/WorkGalleryModel.js';
+
+
+/**
+ * Classe qui gère la vue de la fenêtre modale de la galerie.
+ * @class
+ */
+export class GalleryModalView {
+  /**
+   * Crée une instance de GalleryModalView.
+   * @constructor
+   */
+  constructor() {
+    /**
+     * Conteneur de la fenêtre modale.
+     * @type {HTMLElement}
+     */
+    this.modalContainer = document.getElementById('modal-container');
+
+     /**
+     * Contenu de la fenêtre modale.
+     * @type {HTMLElement}
+     */
+    this.modalContent = document.getElementById('modal-content');
+
+    /**
+     * Overlay de la fenêtre modale.
+     * @type {HTMLElement}
+     */
+    this.overlay = document.getElementById('overlay');
+
+    /**
+     * Bouton de retour à la galerie.
+     * @type {HTMLElement}
+     */
+    this.back = document.getElementById('backToFirstModal');
+
+    /**
+     * Modèle de galerie de travaux.
+     * @type {WorkGalleryModel}
+     */
+    this.model = new WorkGalleryModel();
+    
+    if (!this.modalContainer || !this.overlay ) {
+      console.warn('Un ou plusieurs éléments du DOM sont introuvables.');
+    }
+  }
+
+   /**
+   * Crée un élément HTML avec les attributs et les enfants spécifiés.
+   * @param {string} tag - Le nom de la balise HTML à créer.
+   * @param {Object} attributes - Les attributs de l'élément HTML.
+   * @param {HTMLElement[]} children - Les éléments enfants à ajouter.
+   * @returns {HTMLElement} - L'élément HTML créé.
+   */
+  createElement(tag, attributes = {}, children = []) {
+    const element = document.createElement(tag);
+    for (const [key, value] of Object.entries(attributes)) {
+      element[key] = value;
+    }
+    element.append(...children);
+    return element;
+  }
+
+  /**
+   * Charge le contenu de la fenêtre modale de la galerie.
+   * @returns {HTMLElement} - Le contenu de la fenêtre modale.
+   */
+  loadGalleryModal(){
+    const galleryModalTitle = this.createElement('h2', {className: 'modal-title', textContent: 'Gallerie photo'});
+    const galleryModalGallery = this.createElement('div', {id: 'modalGallery'});
+    const galleryModalSeparator = this.createElement('hr', {className: 'separator'});
+    const galleryModalFooter = this.createElement('div', {className: 'modal-footer'});
+
+    const addWork = this.createElement('button', {id: 'addPicture', textContent: 'Ajouter une photo'});
+    const deleteGallery = this.createElement('button', {id: 'delete-gallery', textContent: 'Supprimer la galerie'});
+
+    galleryModalFooter.append(addWork, deleteGallery);
+
+    return this.createElement('section', {className: 'modal-gallery'}, [galleryModalTitle, galleryModalGallery, galleryModalSeparator, galleryModalFooter]);
+  }
+
+   /**
+   * Affiche les œuvres dans la fenêtre modale.
+   * @param {Object[]} works - Les données des œuvres à afficher.
+   */
+  showWorks(works) {
+    const modalGallery = document.getElementById('modalGallery');
+    let html = '';
+    let isFirst = true;
+  
+    works.forEach(work => {
+      html += `
+        &lt;figure class="work-item">
+          &lt;img src="${work.imageUrl}" alt="${work.title}" />
+          &lt;button class="edit-button" data-id="${work.id}">éditer&lt;/button>`;
+  
+      if (isFirst) {
+        html += `&lt;i class="fas fa-arrows-alt move-icon">&lt;/i>`;
+        html += `&lt;i class="fas fa-trash trash-icon">&lt;/i>`;
+        isFirst = false;
+      } else {
+        html += `&lt;i class="fas fa-trash trash-icon">&lt;/i>`;
+      }
+  
+      html += `&lt;/figure>`;
+    });
+  
+    modalGallery.innerHTML = html;
+  
+    document.querySelectorAll('.delete-button').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const id = event.target.getAttribute('data-id');
+        // Appelez une méthode pour supprimer l'œuvre
+      });
+    });
+  }
+  
+   /**
+   * Charge le contenu de la fenêtre modale pour ajouter une nouvelle image.
+   * @returns {HTMLElement} - Le contenu de la fenêtre modale pour ajouter une image.
+   */
+  loadAddPicture() {
+    
+    const addPictureTitle = this.createElement('h2', {className: 'modal-title',textContent: 'Ajout photo'});
+    const addPictureForm = this.createElement('form', {id: 'modal-form', method: 'post', enctype: 'multipart/form-data', action: '#'});
+
+    const addPictureContainer = this.createElement('div', {id: 'addPictureContainer'});
+
+    const addPictureFileIcon = this.createElement('i', {className: 'fas fa-regular fa-image icon-preview'});
+
+    const addPictureFileLabel = this.createElement('label', {htmlFor: 'file', textContent: '+ Ajouter photo'});
+    const addPictureFile = this.createElement('input', {type: 'file', name: 'file', id: 'file', accept: 'image/png, image/jpeg'});
+    const addPictureFileInfo = this.createElement('p', {id: 'file-info', textContent: 'jpg, png : 4mo max'});
+
+    const addPicturePreviewContainer = this.createElement('div', {id: 'preview'});
+    const addPicturePreview = this.createElement('img', {id: 'image-preview', src: '', alt: ''});
+
+    addPicturePreviewContainer.append(addPicturePreview);
+    addPictureContainer.append(addPictureFileIcon, addPictureFileLabel, addPictureFile, addPictureFileInfo, addPicturePreviewContainer);
+
+    const addPictureInputContainer = this.createElement('div', {id: 'addPictureInputContainer'});
+
+
+    const addPictureTitleInputLabel = this.createElement('label', {htmlFor: 'title', textContent: 'Titre'});
+    const addPictureTitleInput = this.createElement('input', {type: 'text', name: 'title', id: 'title'});
+
+    const addPictureCategoryLabel = this.createElement('label', {htmlFor: 'category', textContent: 'Catégorie'});
+    const addPictureCategory = this.createElement('select', {name: 'category', id: 'category'});
+    const addPictureCategoryOption1 = this.createElement('option', {value: '1', textContent: ""});
+
+    addPictureCategory.append(addPictureCategoryOption1);
+    addPictureInputContainer.append(addPictureTitleInputLabel, addPictureTitleInput, addPictureCategoryLabel, addPictureCategory);
+
+    const addPictureFooter = this.createElement('div', {className: 'add-Picture-footer'});
+    const addPictureSeparator = this.createElement('hr', {className: 'separator'});
+    const addPictureSubmit = this.createElement('button', {id: 'addPictureSubmit', textContent: 'Valider'});
+
+    addPictureFooter.append(addPictureSeparator, addPictureSubmit);
+
+    addPictureForm.append(addPictureContainer,addPictureInputContainer, addPictureFooter);
+
+    return this.createElement('section', {className: 'modal-addPicture'}, [addPictureTitle, addPictureForm]);
+  }
+
+  /**
+   * Ouvre la fenêtre modale.
+   */
+  openModal() {
+    if (this.modalContainer) {
+      this.overlay.style.visibility = 'visible';
+      this.modalContainer.style.visibility = 'visible';
+      this.back.style.visibility = 'hidden';
+      this.modalContent.append(this.loadGalleryModal());
+    }
+  }
+
+  /**
+   * Revient à la galerie dans la fenêtre modale.
+   */
+  backToGallery() {
+    if (this.modalContainer) {
+      this.modalContent.innerHTML = '';
+      this.modalContent.append(this.loadGalleryModal());
+      this.back.style.visibility = 'hidden';
+    }
+  }
+
+  /**
+   * Charge la fenêtre modale pour ajouter une image.
+   */
+  loadAddPictureModal() {
+    if (this.modalContainer) {
+      this.modalContent.innerHTML = '';
+      this.modalContent.append(this.loadAddPicture());
+      this.back.style.visibility = 'visible';
+    }
+  }
+
+  /**
+   * Ferme la fenêtre modale.
+   */
+  closeModal() {
+    if (this.modalContainer) {
+      this.modalContainer.style.visibility = 'hidden';
+      this.back.style.visibility = 'hidden';
+      this.modalContent.innerHTML = '';
+      this.overlay.style.visibility = 'hidden';
+
+    }
+  }
+
+  /**
+   * Attache un écouteur d'événement pour ouvrir la fenêtre modale.
+   * @param {Function} callback - La fonction de rappel à exécuter lors de l'ouverture de la fenêtre modale.
+   */
+  attachOpenModalListener(callback) {
+    const openModal = document.getElementById('openModal');
+    if (openModal) {
+      openModal.addEventListener('click', callback);
+    }
+  }
+
+   /**
+   * Attache un écouteur d'événement pour revenir à la galerie dans la fenêtre modale.
+   * @param {Function} callback - La fonction de rappel à exécuter lors du retour à la galerie.
+   */
+  attachBackToGalleryListener(callback) {
+    const backToGallery = document.getElementById('backToFirstModal');
+    if (backToGallery) {
+      backToGallery.addEventListener('click', callback);
+    }
+  }
+
+  /**
+   * Attache un écouteur d'événement pour fermer la fenêtre modale en cliquant sur l'overlay.
+   * @param {Function} callback - La fonction de rappel à exécuter lors de la fermeture de la fenêtre modale.
+   */
+  attachOverlayListener(callback) {
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+      overlay.addEventListener('click', callback);
+    }
+  }
+
+  /**
+   * Initialise les écouteurs d'événements pour les boutons d'ajout, de fermeture et de suppression.
+   */
+  initializeEventListeners() {
+    /**
+     * Bouton pour ajouter une image.
+     * @type {HTMLElement}
+     */
+    const addPicture = document.getElementById('addPicture');
+    
+    /**
+     * Bouton pour fermer la fenêtre modale.
+     * @type {HTMLElement}
+     */
+    const closeModal = document.getElementById('closeModal');
+    
+    /**
+     * Bouton pour supprimer la galerie.
+     * @type {HTMLElement}
+     */
+    const deleteGallery = document.getElementById('delete-gallery');
+
+    if (addPicture) {
+      addPicture.addEventListener('click', () => {
+        this.loadAddPictureModal();
+      });
+    }
+
+    if (closeModal) {
+      closeModal.addEventListener('click', () => {
+        this.closeModal();
+      });
+    }
+
+    if (deleteGallery) {
+      deleteGallery.addEventListener('click', () => {
+        this.deleteGallery();
+      });
+    }
+  }
+
+
+   /**
+   * Remplit la liste déroulante des catégories avec les catégories fournies.
+   * @param {Object[]} categoriesArray - Un tableau d'objets représentant les catégories.
+   */
+  populateCategories(categoriesArray) {
+    const categorySelect = document.getElementById('category');
+    if (categorySelect) {
+      categoriesArray.forEach((category) => {
+        const option = document.createElement('option');
+        option.value = category.name;
+        option.textContent = category.name;
+        categorySelect.appendChild(option);
+      });
+    } else {
+      console.warn("Élément &lt;select> pour les catégories non trouvé.");
+    }
+  }
+
+  /**
+   * Initialise la prévisualisation de l'image lors de la sélection d'un fichier.
+   */
+  initializeImagePreview() {
+    const fileInput = document.getElementById('file');
+    const imagePreview = document.getElementById('image-preview');
+    const previewContainer = document.getElementById('preview');
+    const addPictureSubmit = document.getElementById('addPictureSubmit');
+    
+    if (fileInput &amp;&amp; imagePreview) {
+      fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (!file) {
+          return;
+        }
+  
+        const reader = new FileReader();
+  
+        reader.onload = (e) => {
+          imagePreview.src = e.target.result;
+        // Cache tous les éléments enfants de addPictureContainer
+        Array.from(addPictureContainer.children).forEach(child => {
+          child.style.display = 'none';
+        });
+
+        // Affiche uniquement l'image de prévisualisation
+        previewContainer.style.display = 'block';
+        addPictureSubmit.style.background = '#1D6154';
+      };
+  
+        reader.readAsDataURL(file);
+      });
+    }
+  } 
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:58:12 GMT+0200 (heure d’été d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

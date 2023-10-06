@@ -1,23 +1,40 @@
-// Cette classe sert à gérer la vue de la galerie
+/**
+ * Classe qui gère la vue de la galerie d'œuvres.
+ * @class
+ */
 export class WorkGalleryView {
+  /**
+   * Crée une instance de WorkGalleryView.
+   * @constructor
+   */
   constructor() {
-    // On accède à l'élément DOM qui contiendra la galerie
+    /**
+     * Élément DOM qui contient la galerie.
+     * @type {HTMLElement}
+     */
     this.galleryElement = document.querySelector('.gallery');
   }
 
-  // Cette méthode crée un élément DOM pour une œuvre
+  /**
+   * Crée un élément DOM pour une œuvre.
+   * @param {Object} work - Les données de l'œuvre.
+   * @param {number} work.id - L'identifiant de l'œuvre.
+   * @param {string} work.imageUrl - L'URL de l'image de l'œuvre.
+   * @param {string} work.title - Le titre de l'œuvre.
+   * @returns {HTMLElement} - L'élément DOM représentant l'œuvre.
+   */
   createWorkElement(work) {
-    // On crée une nouvelle balise <figure>
+    // Crée une nouvelle balise <figure>
     const workElement = document.createElement('figure');
     workElement.dataset.id = work.id;
 
-    // On crée une balise <img> pour l'image
+    // Crée une balise <img> pour l'image
     const imageElement = document.createElement('img');
     imageElement.src = work.imageUrl;
     imageElement.alt = work.title;
     workElement.append(imageElement);
 
-    // On crée une balise <figcaption> pour le titre
+    // Crée une balise <figcaption> pour le titre
     const caption = document.createElement('figcaption');
     caption.textContent = work.title;
     workElement.append(caption);
@@ -25,12 +42,17 @@ export class WorkGalleryView {
     return workElement;
   }
 
-  // Cette méthode vide la galerie
+  /**
+   * Vide la galerie en supprimant tous les éléments enfants.
+   */
   clearGallery() {
     this.galleryElement.innerHTML = '';
   }
 
-  // Cette méthode affiche toutes les œuvres dans la galerie
+  /**
+   * Affiche toutes les œuvres dans la galerie.
+   * @param {Object[]} works - Un tableau d'objets représentant les œuvres.
+   */
   renderGallery(works) {
     this.clearGallery();
     works.forEach(work => {

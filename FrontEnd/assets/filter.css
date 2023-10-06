@@ -1,0 +1,26 @@
+#filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.category-button {
+   max-width: 198px;
+   min-width: 100px;
+   height: 37px;
+   border-radius: 60px;
+   border: 1px solid #1D6154;
+   background: transparent;
+   padding: 0 8px;
+   cursor: pointer;
+}
+.category-button:hover {
+   background: #1D6154;
+   color: #fff;
+}
+.category-button.active {
+  background: #1D6154;
+  color: #fff;
+}

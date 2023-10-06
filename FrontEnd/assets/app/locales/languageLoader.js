@@ -46,7 +46,6 @@ async function loadContentForLanguage(languageCode) {
 /**
  * Initialise les ressources textuelles de l'application en fonction de la langue préférée de l'utilisateur.
  * @async
- * @exports
  * @returns {boolean} - `true` si le chargement réussit, `false` sinon.
  */
 export async function initializeTextResources() {
