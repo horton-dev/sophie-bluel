@@ -1,14 +1,44 @@
 import { WorkGalleryModel } from '../models/WorkGalleryModel.js';
-import { categoriesNewSet } from '../utils/CategoriesAPI.js';
 
 
-
+/**
+ * Classe qui gère la vue de la fenêtre modale de la galerie.
+ * @class
+ */
 export class GalleryModalView {
+  /**
+   * Crée une instance de GalleryModalView.
+   * @constructor
+   */
   constructor() {
+    /**
+     * Conteneur de la fenêtre modale.
+     * @type {HTMLElement}
+     */
     this.modalContainer = document.getElementById('modal-container');
+
+     /**
+     * Contenu de la fenêtre modale.
+     * @type {HTMLElement}
+     */
     this.modalContent = document.getElementById('modal-content');
+
+    /**
+     * Overlay de la fenêtre modale.
+     * @type {HTMLElement}
+     */
     this.overlay = document.getElementById('overlay');
+
+    /**
+     * Bouton de retour à la galerie.
+     * @type {HTMLElement}
+     */
     this.back = document.getElementById('backToFirstModal');
+
+    /**
+     * Modèle de galerie de travaux.
+     * @type {WorkGalleryModel}
+     */
     this.model = new WorkGalleryModel();
     
     if (!this.modalContainer || !this.overlay ) {
@@ -16,6 +46,13 @@ export class GalleryModalView {
     }
   }
 
+   /**
+   * Crée un élément HTML avec les attributs et les enfants spécifiés.
+   * @param {string} tag - Le nom de la balise HTML à créer.
+   * @param {Object} attributes - Les attributs de l'élément HTML.
+   * @param {HTMLElement[]} children - Les éléments enfants à ajouter.
+   * @returns {HTMLElement} - L'élément HTML créé.
+   */
   createElement(tag, attributes = {}, children = []) {
     const element = document.createElement(tag);
     for (const [key, value] of Object.entries(attributes)) {
@@ -25,6 +62,10 @@ export class GalleryModalView {
     return element;
   }
 
+  /**
+   * Charge le contenu de la fenêtre modale de la galerie.
+   * @returns {HTMLElement} - Le contenu de la fenêtre modale.
+   */
   loadGalleryModal(){
     const galleryModalTitle = this.createElement('h2', {className: 'modal-title', textContent: 'Gallerie photo'});
     const galleryModalGallery = this.createElement('div', {id: 'modalGallery'});
@@ -39,6 +80,10 @@ export class GalleryModalView {
     return this.createElement('section', {className: 'modal-gallery'}, [galleryModalTitle, galleryModalGallery, galleryModalSeparator, galleryModalFooter]);
   }
 
+   /**
+   * Affiche les œuvres dans la fenêtre modale.
+   * @param {Object[]} works - Les données des œuvres à afficher.
+   */
   showWorks(works) {
     const modalGallery = document.getElementById('modalGallery');
     let html = '';
@@ -71,6 +116,10 @@ export class GalleryModalView {
     });
   }
   
+   /**
+   * Charge le contenu de la fenêtre modale pour ajouter une nouvelle image.
+   * @returns {HTMLElement} - Le contenu de la fenêtre modale pour ajouter une image.
+   */
   loadAddPicture() {
     
     const addPictureTitle = this.createElement('h2', {className: 'modal-title',textContent: 'Ajout photo'});
@@ -114,6 +163,9 @@ export class GalleryModalView {
     return this.createElement('section', {className: 'modal-addPicture'}, [addPictureTitle, addPictureForm]);
   }
 
+  /**
+   * Ouvre la fenêtre modale.
+   */
   openModal() {
     if (this.modalContainer) {
       this.overlay.style.visibility = 'visible';
@@ -123,6 +175,9 @@ export class GalleryModalView {
     }
   }
 
+  /**
+   * Revient à la galerie dans la fenêtre modale.
+   */
   backToGallery() {
     if (this.modalContainer) {
       this.modalContent.innerHTML = '';
@@ -131,6 +186,9 @@ export class GalleryModalView {
     }
   }
 
+  /**
+   * Charge la fenêtre modale pour ajouter une image.
+   */
   loadAddPictureModal() {
     if (this.modalContainer) {
       this.modalContent.innerHTML = '';
@@ -139,6 +197,9 @@ export class GalleryModalView {
     }
   }
 
+  /**
+   * Ferme la fenêtre modale.
+   */
   closeModal() {
     if (this.modalContainer) {
       this.modalContainer.style.visibility = 'hidden';
@@ -149,31 +210,59 @@ export class GalleryModalView {
     }
   }
 
-
-attachOpenModalListener(callback) {
-  const openModal = document.getElementById('openModal');
-  if (openModal) {
-    openModal.addEventListener('click', callback);
+  /**
+   * Attache un écouteur d'événement pour ouvrir la fenêtre modale.
+   * @param {Function} callback - La fonction de rappel à exécuter lors de l'ouverture de la fenêtre modale.
+   */
+  attachOpenModalListener(callback) {
+    const openModal = document.getElementById('openModal');
+    if (openModal) {
+      openModal.addEventListener('click', callback);
+    }
   }
-}
 
-attachBackToGalleryListener(callback) {
-  const backToGallery = document.getElementById('backToFirstModal');
-  if (backToGallery) {
-    backToGallery.addEventListener('click', callback);
+   /**
+   * Attache un écouteur d'événement pour revenir à la galerie dans la fenêtre modale.
+   * @param {Function} callback - La fonction de rappel à exécuter lors du retour à la galerie.
+   */
+  attachBackToGalleryListener(callback) {
+    const backToGallery = document.getElementById('backToFirstModal');
+    if (backToGallery) {
+      backToGallery.addEventListener('click', callback);
+    }
   }
-}
 
-attachOverlayListener(callback) {
-  const overlay = document.getElementById('overlay');
-  if (overlay) {
-    overlay.addEventListener('click', callback);
+  /**
+   * Attache un écouteur d'événement pour fermer la fenêtre modale en cliquant sur l'overlay.
+   * @param {Function} callback - La fonction de rappel à exécuter lors de la fermeture de la fenêtre modale.
+   */
+  attachOverlayListener(callback) {
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+      overlay.addEventListener('click', callback);
+    }
   }
-}
 
+  /**
+   * Initialise les écouteurs d'événements pour les boutons d'ajout, de fermeture et de suppression.
+   */
   initializeEventListeners() {
+    /**
+     * Bouton pour ajouter une image.
+     * @type {HTMLElement}
+     */
     const addPicture = document.getElementById('addPicture');
+    
+    /**
+     * Bouton pour fermer la fenêtre modale.
+     * @type {HTMLElement}
+     */
     const closeModal = document.getElementById('closeModal');
+    
+    /**
+     * Bouton pour supprimer la galerie.
+     * @type {HTMLElement}
+     */
     const deleteGallery = document.getElementById('delete-gallery');
 
     if (addPicture) {
@@ -193,8 +282,13 @@ attachOverlayListener(callback) {
         this.deleteGallery();
       });
     }
-    
   }
+
+
+   /**
+   * Remplit la liste déroulante des catégories avec les catégories fournies.
+   * @param {Object[]} categoriesArray - Un tableau d'objets représentant les catégories.
+   */
   populateCategories(categoriesArray) {
     const categorySelect = document.getElementById('category');
     if (categorySelect) {
@@ -209,6 +303,9 @@ attachOverlayListener(callback) {
     }
   }
 
+  /**
+   * Initialise la prévisualisation de l'image lors de la sélection d'un fichier.
+   */
   initializeImagePreview() {
     const fileInput = document.getElementById('file');
     const imagePreview = document.getElementById('image-preview');

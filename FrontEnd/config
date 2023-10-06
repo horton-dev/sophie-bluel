@@ -4,6 +4,7 @@ assets/
 │   │
 │   ├── controllers/                        
 │   │   │
+│   │   ├── AuthController.js  
 │   │   ├── FilterController.js             
 │   │   ├── LoginFormController.js          
 │   │   ├── ModalController.js              
@@ -67,4 +68,3 @@ footer.html
 header.html
 index.html
 login.html
-

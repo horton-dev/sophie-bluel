@@ -1,12 +1,22 @@
 import { apiFetch } from "./apiService.js ";
 
-// Récupérer les données de l'API (renvoie un Array)
+/**
+ * Récupère les données des catégories à partir de l'API.
+ * @async
+ * @function
+ * @returns {Promise<Array>} - Une promesse résolue avec un tableau d'objets représentant les catégories.
+ */
 export async function fetchCategories() {
   const categories = await apiFetch('categories');
   return categories;
 }
 
-// Convertir le tableau en Set et le retourner
+/**
+ * Convertit un tableau en un ensemble (Set) et le retourne.
+ * @async
+ * @function
+ * @returns {Promise<Set>} - Une promesse résolue avec un ensemble (Set) contenant les données des catégories.
+ */
 export async function categoriesNewSet() {
   const categories = await fetchCategories();
   const categoriesSet = new Set(categories);

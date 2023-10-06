@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core/errorHandler.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AuthController.html">AuthController</a><ul class='methods'><li data-type='method'><a href="AuthController.html#handleClick">handleClick</a></li><li data-type='method'><a href="AuthController.html#init">init</a></li></ul></li><li><a href="FilterController.html">FilterController</a><ul class='methods'><li data-type='method'><a href="FilterController.html#bindEvents">bindEvents</a></li><li data-type='method'><a href="FilterController.html#handleCategoryFilter">handleCategoryFilter</a></li><li data-type='method'><a href="FilterController.html#initFilter">initFilter</a></li></ul></li><li><a href="FilterModel.html">FilterModel</a><ul class='methods'><li data-type='method'><a href="FilterModel.html#filterWorksByCategory">filterWorksByCategory</a></li><li data-type='method'><a href="FilterModel.html#init">init</a></li></ul></li><li><a href="FilterView.html">FilterView</a><ul class='methods'><li data-type='method'><a href="FilterView.html#bindCategoryClick">bindCategoryClick</a></li><li data-type='method'><a href="FilterView.html#createCategoryButton">createCategoryButton</a></li><li data-type='method'><a href="FilterView.html#renderCategoryFilters">renderCategoryFilters</a></li><li data-type='method'><a href="FilterView.html#setActiveCategory">setActiveCategory</a></li></ul></li><li><a href="GalleryModalView.html">GalleryModalView</a><ul class='methods'><li data-type='method'><a href="GalleryModalView.html#attachBackToGalleryListener">attachBackToGalleryListener</a></li><li data-type='method'><a href="GalleryModalView.html#attachOpenModalListener">attachOpenModalListener</a></li><li data-type='method'><a href="GalleryModalView.html#attachOverlayListener">attachOverlayListener</a></li><li data-type='method'><a href="GalleryModalView.html#backToGallery">backToGallery</a></li><li data-type='method'><a href="GalleryModalView.html#closeModal">closeModal</a></li><li data-type='method'><a href="GalleryModalView.html#createElement">createElement</a></li><li data-type='method'><a href="GalleryModalView.html#initializeEventListeners">initializeEventListeners</a></li><li data-type='method'><a href="GalleryModalView.html#initializeImagePreview">initializeImagePreview</a></li><li data-type='method'><a href="GalleryModalView.html#loadAddPicture">loadAddPicture</a></li><li data-type='method'><a href="GalleryModalView.html#loadAddPictureModal">loadAddPictureModal</a></li><li data-type='method'><a href="GalleryModalView.html#loadGalleryModal">loadGalleryModal</a></li><li data-type='method'><a href="GalleryModalView.html#openModal">openModal</a></li><li data-type='method'><a href="GalleryModalView.html#populateCategories">populateCategories</a></li><li data-type='method'><a href="GalleryModalView.html#showWorks">showWorks</a></li></ul></li><li><a href="LoginFormModel.html">LoginFormModel</a><ul class='methods'><li data-type='method'><a href="LoginFormModel.html#emailValidityCheck">emailValidityCheck</a></li><li data-type='method'><a href="LoginFormModel.html#loginUser">loginUser</a></li></ul></li><li><a href="LoginFormView.html">LoginFormView</a><ul class='methods'><li data-type='method'><a href="LoginFormView.html#displayLoginError">displayLoginError</a></li></ul></li><li><a href="ModalController.html">ModalController</a><ul class='methods'><li data-type='method'><a href="ModalController.html#initModal">initModal</a></li><li data-type='method'><a href="ModalController.html#initializeAndShowWorks">initializeAndShowWorks</a></li></ul></li><li><a href="ModalModel.html">ModalModel</a><ul class='methods'><li data-type='method'><a href="ModalModel.html#clearCurrentModal">clearCurrentModal</a></li><li data-type='method'><a href="ModalModel.html#setCurrentModal">setCurrentModal</a></li></ul></li><li><a href="UserDashboardController.html">UserDashboardController</a><ul class='methods'><li data-type='method'><a href="UserDashboardController.html#init">init</a></li></ul></li><li><a href="UserDashboardView.html">UserDashboardView</a><ul class='methods'><li data-type='method'><a href="UserDashboardView.html#createButtonWithIcon">createButtonWithIcon</a></li><li data-type='method'><a href="UserDashboardView.html#createPublishButton">createPublishButton</a></li></ul></li><li><a href="WorkGalleryController.html">WorkGalleryController</a><ul class='methods'><li data-type='method'><a href="WorkGalleryController.html#initGallery">initGallery</a></li><li data-type='method'><a href="WorkGalleryController.html#updateGalleryView">updateGalleryView</a></li></ul></li><li><a href="WorkGalleryModel.html">WorkGalleryModel</a><ul class='methods'><li data-type='method'><a href="WorkGalleryModel.html#addWork">addWork</a></li><li data-type='method'><a href="WorkGalleryModel.html#clearWorks">clearWorks</a></li><li data-type='method'><a href="WorkGalleryModel.html#getWorks">getWorks</a></li><li data-type='method'><a href="WorkGalleryModel.html#removeWork">removeWork</a></li></ul></li><li><a href="WorkGalleryView.html">WorkGalleryView</a><ul class='methods'><li data-type='method'><a href="WorkGalleryView.html#clearGallery">clearGallery</a></li><li data-type='method'><a href="WorkGalleryView.html#createWorkElement">createWorkElement</a></li><li data-type='method'><a href="WorkGalleryView.html#renderGallery">renderGallery</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Login.html">Login</a><ul class='methods'><li data-type='method'><a href="module-Login.html#~initLoginForm">initLoginForm</a></li><li data-type='method'><a href="module-Login.html#~initializeLoginPage">initializeLoginPage</a></li></ul></li><li><a href="module-Main.html">Main</a><ul class='methods'><li data-type='method'><a href="module-Main.html#~initializeApplication">initializeApplication</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ACCESS_TOKEN">ACCESS_TOKEN</a></li><li><a href="global.html#BASE_URL">BASE_URL</a></li><li><a href="global.html#Messages">Messages</a></li><li><a href="global.html#apiFetch">apiFetch</a></li><li><a href="global.html#cachedContents">cachedContents</a></li><li><a href="global.html#categoriesNewSet">categoriesNewSet</a></li><li><a href="global.html#displayErrorOnDOM">displayErrorOnDOM</a></li><li><a href="global.html#fetchCategories">fetchCategories</a></li><li><a href="global.html#fetchGallery">fetchGallery</a></li><li><a href="global.html#filterContainer">filterContainer</a></li><li><a href="global.html#galleryNewSet">galleryNewSet</a></li><li><a href="global.html#getErrorMessage">getErrorMessage</a></li><li><a href="global.html#getMessage">getMessage</a></li><li><a href="global.html#getPreferredLanguage">getPreferredLanguage</a></li><li><a href="global.html#initLogin">initLogin</a></li><li><a href="global.html#initializeTextResources">initializeTextResources</a></li><li><a href="global.html#loadContentForLanguage">loadContentForLanguage</a></li><li><a href="global.html#loadHeaderFooter">loadHeaderFooter</a></li><li><a href="global.html#logError">logError</a></li><li><a href="global.html#showAlertWithoutDuplication">showAlertWithoutDuplication</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core/errorHandler.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {getMessage} from '../locales/languageLoader.js';
+
+/**
+ * Retourne le message d'erreur associé à un code d'erreur donné.
+ *
+ * @param {string} errorCode - Le code d'erreur.
+ * @return {string} - Le message d'erreur associé.
+ */
+export function getErrorMessage(errorCode) {
+  const errorMessage = getMessage(`errors.${errorCode}`);
+  const defaultErrorMessage = 'Une erreur inattendue s\'est produite.';
+  return errorMessage || defaultErrorMessage;
+}
+
+
+/**
+ * Affiche un message d'erreur dans la console.
+ *
+ * @param {string} errorCode - Le code d'erreur.
+ */
+export function logError(errorCode) {
+  const errorMessage = getErrorMessage(errorCode);
+  console.error(`Erreur (${errorCode}): ${errorMessage}`);
+}
+
+/**
+ * Affiche un message d'erreur dans un élément DOM spécifié.
+ * Si le message existe déjà, il n'ajoute pas de doublon.
+ *
+ * @param {string} errorCode - Le code d'erreur.
+ * @param {string|HTMLElement} target - L'ID de l'élément DOM ou l'élément DOM lui-même où le message d'erreur doit être affiché.
+ * @param {string} [className] - La classe CSS à appliquer au message d'erreur (facultatif).
+ */
+export function displayErrorOnDOM(errorCode, target, className) {
+  const errorMessage = getErrorMessage(errorCode);
+
+  let targetElement;
+  if (typeof target === 'string') {
+    targetElement = document.getElementById(target);
+  } else {
+    targetElement = target;
+  }
+
+  if (className) {
+    const existingError = targetElement.querySelector(`.${className}`);
+    if (!existingError) {
+      const errorElement = document.createElement('p');
+      errorElement.innerText = errorMessage;
+      errorElement.classList.add('error-message'); // Ajoutez la classe pour le style
+      errorElement.classList.add(className);
+      targetElement.insertBefore(errorElement, targetElement.lastElementChild);
+    } else {
+      existingError.textContent = errorMessage;
+    }
+  } else {
+    targetElement.textContent = errorMessage;
+  }
+}
+
+/**
+ * Affiche une alerte avec un message d'erreur, sans duplication.
+ *
+ * @param {string} errorCode - Le code d'erreur.
+ */
+export function showAlertWithoutDuplication(errorCode) {
+  const existingAlert = document.getElementById(errorCode);
+
+  if (!existingAlert) {
+    const errorMessage = getErrorMessage(errorCode);
+    alert(errorMessage);
+  }
+}
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:58:12 GMT+0200 (heure d’été d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

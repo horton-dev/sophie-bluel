@@ -1,0 +1,70 @@
+{
+    "tags": {
+      "allowUnknownTags": true
+    },
+    "source": {
+      "include": "../FrontEnd/assets/app",
+      "includePattern": ".js$",
+      "excludePattern": "(node_modules/|docs)"
+    },
+    "opts": {
+      "template": "node_modules/docdash",
+      "encoding": "utf8",
+      "destination": "./docs/",
+      "recurse": true
+    },
+    "plugins": [
+      "plugins/markdown"
+    ],
+    "templates": {
+      "docdash": {
+        "static": true,
+        "sort": true,
+        "sectionOrder": [
+          "Classes",
+          "Modules",
+          "Externals",
+          "Events",
+          "Namespaces",
+          "Mixins",
+          "Tutorials",
+          "Interfaces"
+        ],
+        "disqus": "",
+        "openGraph": {
+          "title": "",
+          "type": "website",
+          "image": "",
+          "site_name": "",
+          "url": ""
+        },
+        "meta": {
+          "title": "",
+          "description": "",
+          "keyword": ""
+        },
+        "search": true,
+        "commonNav": true,
+        "collapse": "top",
+        "wrap": true,
+        "typedefs": true,
+        "navLevel": 1,
+        "private": false,
+        "removeQuotes": "none",
+        "scripts": [],
+        "ShortenTypes": false,
+        "menu": {
+          "Project Website": {
+            "href": "https://myproject.com",
+            "target": "_blank",
+            "class": "menu-item",
+            "id": "website_link"
+          }
+        },
+        "scopeInOutputPath": true,
+        "nameInOutputPath": true,
+        "versionInOutputPath": true
+      }
+    }
+  }
+  

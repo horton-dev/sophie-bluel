@@ -1,21 +1,39 @@
+
 import { GalleryModalView } from "../views/galleryModalView.js";
 import { ModalModel } from "../models/modalModel.js";
 import { fetchGallery } from "../utils/GalleryAPI.js";
 import { categoriesNewSet } from "../utils/CategoriesAPI.js";
 
+/**
+ * Classe pour gérer la logique liée aux modals dans la galerie.
+ */
 export class ModalController {
+  /**
+   * Crée une instance du contrôleur pour les modals de la galerie.
+   * @param {Object} workGalleryModel - Le modèle associé à la galerie.
+   */
   constructor(workGalleryModel) {
+    /** @type {GalleryModalView} */
     this.modalView = new GalleryModalView();
+
+    /** @type {ModalModel} */
     this.modalModel = new ModalModel();
+
+      /** @type {Object} */
     this.WorkGalleryModel = workGalleryModel;
+
+    /** @type {Array} */
     this.works = null;
+
+    /** @type {Array} */
     this.workIds = null;
   }
   
+  /**
+   * Méthode pour initialiser le modal.
+   * @async
+   */
   async initModal() {
-
-    // const categoriesSet = await categoriesNewSet();
-    // this.modalView.populateCategories(Array.from(categoriesSet));
  
     this.works = await fetchGallery();
     this.workIds = this.WorkGalleryModel.getWorks();
@@ -36,6 +54,10 @@ export class ModalController {
 
   }
   
+   /**
+   * Initialise et affiche les œuvres dans le modal.
+   * @async
+   */
   async initializeAndShowWorks() {
     this.modalView.initializeEventListeners();
     this.modalView.showWorks(this.works, this.workIds);

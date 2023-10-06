@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>FilterView - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AuthController.html">AuthController</a><ul class='methods'><li data-type='method'><a href="AuthController.html#handleClick">handleClick</a></li><li data-type='method'><a href="AuthController.html#init">init</a></li></ul></li><li><a href="FilterController.html">FilterController</a><ul class='methods'><li data-type='method'><a href="FilterController.html#bindEvents">bindEvents</a></li><li data-type='method'><a href="FilterController.html#handleCategoryFilter">handleCategoryFilter</a></li><li data-type='method'><a href="FilterController.html#initFilter">initFilter</a></li></ul></li><li><a href="FilterModel.html">FilterModel</a><ul class='methods'><li data-type='method'><a href="FilterModel.html#filterWorksByCategory">filterWorksByCategory</a></li><li data-type='method'><a href="FilterModel.html#init">init</a></li></ul></li><li><a href="FilterView.html">FilterView</a><ul class='methods'><li data-type='method'><a href="FilterView.html#bindCategoryClick">bindCategoryClick</a></li><li data-type='method'><a href="FilterView.html#createCategoryButton">createCategoryButton</a></li><li data-type='method'><a href="FilterView.html#renderCategoryFilters">renderCategoryFilters</a></li><li data-type='method'><a href="FilterView.html#setActiveCategory">setActiveCategory</a></li></ul></li><li><a href="GalleryModalView.html">GalleryModalView</a><ul class='methods'><li data-type='method'><a href="GalleryModalView.html#attachBackToGalleryListener">attachBackToGalleryListener</a></li><li data-type='method'><a href="GalleryModalView.html#attachOpenModalListener">attachOpenModalListener</a></li><li data-type='method'><a href="GalleryModalView.html#attachOverlayListener">attachOverlayListener</a></li><li data-type='method'><a href="GalleryModalView.html#backToGallery">backToGallery</a></li><li data-type='method'><a href="GalleryModalView.html#closeModal">closeModal</a></li><li data-type='method'><a href="GalleryModalView.html#createElement">createElement</a></li><li data-type='method'><a href="GalleryModalView.html#initializeEventListeners">initializeEventListeners</a></li><li data-type='method'><a href="GalleryModalView.html#initializeImagePreview">initializeImagePreview</a></li><li data-type='method'><a href="GalleryModalView.html#loadAddPicture">loadAddPicture</a></li><li data-type='method'><a href="GalleryModalView.html#loadAddPictureModal">loadAddPictureModal</a></li><li data-type='method'><a href="GalleryModalView.html#loadGalleryModal">loadGalleryModal</a></li><li data-type='method'><a href="GalleryModalView.html#openModal">openModal</a></li><li data-type='method'><a href="GalleryModalView.html#populateCategories">populateCategories</a></li><li data-type='method'><a href="GalleryModalView.html#showWorks">showWorks</a></li></ul></li><li><a href="LoginFormModel.html">LoginFormModel</a><ul class='methods'><li data-type='method'><a href="LoginFormModel.html#emailValidityCheck">emailValidityCheck</a></li><li data-type='method'><a href="LoginFormModel.html#loginUser">loginUser</a></li></ul></li><li><a href="LoginFormView.html">LoginFormView</a><ul class='methods'><li data-type='method'><a href="LoginFormView.html#displayLoginError">displayLoginError</a></li></ul></li><li><a href="ModalController.html">ModalController</a><ul class='methods'><li data-type='method'><a href="ModalController.html#initModal">initModal</a></li><li data-type='method'><a href="ModalController.html#initializeAndShowWorks">initializeAndShowWorks</a></li></ul></li><li><a href="ModalModel.html">ModalModel</a><ul class='methods'><li data-type='method'><a href="ModalModel.html#clearCurrentModal">clearCurrentModal</a></li><li data-type='method'><a href="ModalModel.html#setCurrentModal">setCurrentModal</a></li></ul></li><li><a href="UserDashboardController.html">UserDashboardController</a><ul class='methods'><li data-type='method'><a href="UserDashboardController.html#init">init</a></li></ul></li><li><a href="UserDashboardView.html">UserDashboardView</a><ul class='methods'><li data-type='method'><a href="UserDashboardView.html#createButtonWithIcon">createButtonWithIcon</a></li><li data-type='method'><a href="UserDashboardView.html#createPublishButton">createPublishButton</a></li></ul></li><li><a href="WorkGalleryController.html">WorkGalleryController</a><ul class='methods'><li data-type='method'><a href="WorkGalleryController.html#initGallery">initGallery</a></li><li data-type='method'><a href="WorkGalleryController.html#updateGalleryView">updateGalleryView</a></li></ul></li><li><a href="WorkGalleryModel.html">WorkGalleryModel</a><ul class='methods'><li data-type='method'><a href="WorkGalleryModel.html#addWork">addWork</a></li><li data-type='method'><a href="WorkGalleryModel.html#clearWorks">clearWorks</a></li><li data-type='method'><a href="WorkGalleryModel.html#getWorks">getWorks</a></li><li data-type='method'><a href="WorkGalleryModel.html#removeWork">removeWork</a></li></ul></li><li><a href="WorkGalleryView.html">WorkGalleryView</a><ul class='methods'><li data-type='method'><a href="WorkGalleryView.html#clearGallery">clearGallery</a></li><li data-type='method'><a href="WorkGalleryView.html#createWorkElement">createWorkElement</a></li><li data-type='method'><a href="WorkGalleryView.html#renderGallery">renderGallery</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Login.html">Login</a><ul class='methods'><li data-type='method'><a href="module-Login.html#~initLoginForm">initLoginForm</a></li><li data-type='method'><a href="module-Login.html#~initializeLoginPage">initializeLoginPage</a></li></ul></li><li><a href="module-Main.html">Main</a><ul class='methods'><li data-type='method'><a href="module-Main.html#~initializeApplication">initializeApplication</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ACCESS_TOKEN">ACCESS_TOKEN</a></li><li><a href="global.html#BASE_URL">BASE_URL</a></li><li><a href="global.html#Messages">Messages</a></li><li><a href="global.html#apiFetch">apiFetch</a></li><li><a href="global.html#cachedContents">cachedContents</a></li><li><a href="global.html#categoriesNewSet">categoriesNewSet</a></li><li><a href="global.html#displayErrorOnDOM">displayErrorOnDOM</a></li><li><a href="global.html#fetchCategories">fetchCategories</a></li><li><a href="global.html#fetchGallery">fetchGallery</a></li><li><a href="global.html#filterContainer">filterContainer</a></li><li><a href="global.html#galleryNewSet">galleryNewSet</a></li><li><a href="global.html#getErrorMessage">getErrorMessage</a></li><li><a href="global.html#getMessage">getMessage</a></li><li><a href="global.html#getPreferredLanguage">getPreferredLanguage</a></li><li><a href="global.html#initLogin">initLogin</a></li><li><a href="global.html#initializeTextResources">initializeTextResources</a></li><li><a href="global.html#loadContentForLanguage">loadContentForLanguage</a></li><li><a href="global.html#loadHeaderFooter">loadHeaderFooter</a></li><li><a href="global.html#logError">logError</a></li><li><a href="global.html#showAlertWithoutDuplication">showAlertWithoutDuplication</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">FilterView</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            FilterView
+        
+        </h2>
+        
+            <div class="class-description usertext"><p>Classe qui gère la vue des filtres de catégories.</p></div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="FilterView"><span class="type-signature"></span>new FilterView<span class="signature">(filterContainer)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Crée une instance de FilterView.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_FilterView.js.html">views/FilterView.js</a>, <a href="views_FilterView.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filterContainer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>L'élément conteneur des filtres.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="FilterView.html">FilterView</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="filterContainer"><span class="type-signature"></span>filterContainer<span class="type-signature"> :HTMLElement</span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Conteneur des filtres.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_FilterView.js.html">views/FilterView.js</a>, <a href="views_FilterView.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Conteneur des filtres.</p>
+</div>
+
+
+
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">HTMLElement</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="bindCategoryClick"><span class="type-signature"></span>bindCategoryClick<span class="signature">(callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Attache un écouteur d'événement pour le clic sur les boutons de catégorie.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_FilterView.js.html">views/FilterView.js</a>, <a href="views_FilterView.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>La fonction de rappel à exécuter lors du clic sur un bouton de catégorie.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createCategoryButton"><span class="type-signature"></span>createCategoryButton<span class="signature">(category)</span><span class="type-signature"> &rarr; {HTMLButtonElement}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Crée un bouton de catégorie.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_FilterView.js.html">views/FilterView.js</a>, <a href="views_FilterView.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>category</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Le nom de la catégorie.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Le bouton de catégorie créé.</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">HTMLButtonElement</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="renderCategoryFilters"><span class="type-signature"></span>renderCategoryFilters<span class="signature">(categories)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Affiche les filtres de catégories.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_FilterView.js.html">views/FilterView.js</a>, <a href="views_FilterView.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>categories</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Les noms des catégories à afficher.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setActiveCategory"><span class="type-signature"></span>setActiveCategory<span class="signature">(category)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Définit la catégorie active en mettant en surbrillance le bouton correspondant.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_FilterView.js.html">views/FilterView.js</a>, <a href="views_FilterView.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>category</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Le nom de la catégorie active.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:58:12 GMT+0200 (heure d’été d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
