@@ -1,5 +1,5 @@
 import { WorkGalleryModel } from '../models/WorkGalleryModel.js';
-
+import { getMessage } from '../locales/languageLoader.js';
 
 /**
  * Classe qui gère la vue de la fenêtre modale de la galerie.
@@ -67,13 +67,13 @@ export class GalleryModalView {
    * @returns {HTMLElement} - Le contenu de la fenêtre modale.
    */
   loadGalleryModal(){
-    const galleryModalTitle = this.createElement('h2', {className: 'modal-title', textContent: 'Gallerie photo'});
+    const galleryModalTitle = this.createElement('h2', {className: 'modal-title', textContent: getMessage('gallery.title')});
     const galleryModalGallery = this.createElement('div', {id: 'modalGallery'});
     const galleryModalSeparator = this.createElement('hr', {className: 'separator'});
     const galleryModalFooter = this.createElement('div', {className: 'modal-footer'});
 
-    const addWork = this.createElement('button', {id: 'addPicture', textContent: 'Ajouter une photo'});
-    const deleteGallery = this.createElement('button', {id: 'delete-gallery', textContent: 'Supprimer la galerie'});
+    const addWork = this.createElement('button', {id: 'addPicture', textContent: getMessage('gallery.add')});
+    const deleteGallery = this.createElement('button', {id: 'delete-gallery', textContent: getMessage('gallery.delete')});
 
     galleryModalFooter.append(addWork, deleteGallery);
 
@@ -93,7 +93,7 @@ export class GalleryModalView {
       html += `
         <figure class="work-item">
           <img src="${work.imageUrl}" alt="${work.title}" />
-          <button class="edit-button" data-id="${work.id}">éditer</button>`;
+          <button class="edit-button" data-id="${work.id}">${getMessage('gallery.edit')}</button>`;
   
       if (isFirst) {
         html += `<i class="fas fa-arrows-alt move-icon"></i>`;
@@ -122,16 +122,16 @@ export class GalleryModalView {
    */
   loadAddPicture() {
     
-    const addPictureTitle = this.createElement('h2', {className: 'modal-title',textContent: 'Ajout photo'});
+    const addPictureTitle = this.createElement('h2', {className: 'modal-title',textContent: getMessage('addPicture.title')});
     const addPictureForm = this.createElement('form', {id: 'modal-form', method: 'post', enctype: 'multipart/form-data', action: '#'});
 
     const addPictureContainer = this.createElement('div', {id: 'addPictureContainer'});
 
     const addPictureFileIcon = this.createElement('i', {className: 'fas fa-regular fa-image icon-preview'});
 
-    const addPictureFileLabel = this.createElement('label', {htmlFor: 'file', textContent: '+ Ajouter photo'});
+    const addPictureFileLabel = this.createElement('label', {htmlFor: 'file', textContent: getMessage('addPicture.file')});
     const addPictureFile = this.createElement('input', {type: 'file', name: 'file', id: 'file', accept: 'image/png, image/jpeg'});
-    const addPictureFileInfo = this.createElement('p', {id: 'file-info', textContent: 'jpg, png : 4mo max'});
+    const addPictureFileInfo = this.createElement('p', {id: 'file-info', textContent: getMessage('addPicture.fileInfo')});
 
     const addPicturePreviewContainer = this.createElement('div', {id: 'preview'});
     const addPicturePreview = this.createElement('img', {id: 'image-preview', src: '', alt: ''});
@@ -142,10 +142,10 @@ export class GalleryModalView {
     const addPictureInputContainer = this.createElement('div', {id: 'addPictureInputContainer'});
 
 
-    const addPictureTitleInputLabel = this.createElement('label', {htmlFor: 'title', textContent: 'Titre'});
+    const addPictureTitleInputLabel = this.createElement('label', {htmlFor: 'title', textContent: getMessage('addPicture.addTitle')});
     const addPictureTitleInput = this.createElement('input', {type: 'text', name: 'title', id: 'title'});
 
-    const addPictureCategoryLabel = this.createElement('label', {htmlFor: 'category', textContent: 'Catégorie'});
+    const addPictureCategoryLabel = this.createElement('label', {htmlFor: 'category', textContent: getMessage('addPicture.addCategory')});
     const addPictureCategory = this.createElement('select', {name: 'category', id: 'category'});
     const addPictureCategoryOption1 = this.createElement('option', {value: '1', textContent: ""});
 
@@ -154,7 +154,7 @@ export class GalleryModalView {
 
     const addPictureFooter = this.createElement('div', {className: 'add-Picture-footer'});
     const addPictureSeparator = this.createElement('hr', {className: 'separator'});
-    const addPictureSubmit = this.createElement('button', {id: 'addPictureSubmit', textContent: 'Valider'});
+    const addPictureSubmit = this.createElement('button', {id: 'addPictureSubmit', textContent: getMessage('addPicture.submit')});
 
     addPictureFooter.append(addPictureSeparator, addPictureSubmit);
 

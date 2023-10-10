@@ -1,3 +1,4 @@
+import { getMessage } from "../locales/languageLoader.js";
 /**
  * Classe qui gère la vue du tableau de bord de l'utilisateur.
  * @class
@@ -37,7 +38,7 @@ export class UserDashboardView {
   createPublishButton() {
     const publishButton = document.createElement('button');
     publishButton.classList.add('publish-button');
-    publishButton.innerText = 'publier les changements';
+    publishButton.innerText = getMessage('user.publish');
     return publishButton;
   }
 }

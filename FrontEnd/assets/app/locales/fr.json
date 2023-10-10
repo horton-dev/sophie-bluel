@@ -9,9 +9,32 @@
       "filterService.fetchError": "Impossible de récupérer les catégories."
   },
   "gallery": {
-    "noItems": "Aucune œuvre trouvée."
+    "noItems": "Aucune œuvre trouvée.",
+    "title": "Galerie photo",
+    "add": "Ajouter une photo",
+    "delete": "Supprimer la galerie",
+    "edit": "éditer"
+  },
+  "addPicture": {
+    "title": "Ajouter photo",
+    "file": "+ Ajouter photo",
+    "fileInfo": "jpg, png : 4mo max",
+    "addTitle": "Titre",
+    "addCategory": "Catégorie",
+    "submit": "Valider"
   },
   "categories": {
     "all": "Tous"
+  },
+  "auth": {
+    "login": "login",
+    "logout": "logout",
+    "loginError": "Erreur dans l’identifiant ou le mot de passe.",
+    "logoutConfirm": "Êtes-vous sûr de vouloir vous déconnecter ?"
+  },
+  "user": {
+    "modify": "modifier",
+    "editMode": "Mode édition",
+    "publish": "Publier les chargement"
   }
 }

@@ -1,5 +1,6 @@
 import { fetchGallery } from '../utils/GalleryAPI.js';
 import { fetchCategories } from '../utils/CategoriesAPI.js';
+import { getMessage } from '../locales/languageLoader.js';
 
 /**
  * Classe qui gère le modèle du filtre.
@@ -43,7 +44,7 @@ export class FilterModel {
    * @returns {Object[]} - Un tableau contenant les œuvres filtrées.
    */
   filterWorksByCategory(category) {
-    return category === 'tous' 
+    return category === getMessage("categories.all") 
       ? this.allWorks 
       : this.allWorks.filter(item => item.category.name === category);
   }

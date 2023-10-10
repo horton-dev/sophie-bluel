@@ -28,7 +28,7 @@ async function loadContentForLanguage(languageCode) {
   }
 
   try {
-    const response = await fetch(`./assets/js/locales/${languageCode}.json`);
+    const response = await fetch(`./assets/app/locales/${languageCode}.json`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

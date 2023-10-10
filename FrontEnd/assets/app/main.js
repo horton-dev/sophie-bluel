@@ -4,6 +4,7 @@
  * @module Main
  */
 
+import { initializeTextResources } from './locales/languageLoader.js';
 import { loadHeaderFooter } from './services/layoutService.js';
 import { WorkGalleryController } from './controllers/WorkGalleryController.js';
 import { FilterController } from './controllers/FilterController.js';
@@ -12,6 +13,7 @@ import { UserDashboardController } from './controllers/UserDashboardController.j
 import { ModalController } from './controllers/modalController.js';
 import { WorkGalleryModel } from './models/WorkGalleryModel.js';
 import { AuthController } from './controllers/AuthController.js';
+
 
 /**
  * Modèle de galerie de travaux.
@@ -42,7 +44,7 @@ const modalController = new ModalController(workGalleryModel);
 async function initializeApplication() {
   try {
     // Charge les textes
-    // ...
+    await initializeTextResources();
 
     // Charge le header et le footer
     await loadHeaderFooter();
