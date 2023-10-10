@@ -1,4 +1,4 @@
-import { LoginFormView } from '../views/LofinFormView.js';
+import { LoginFormView } from '../views/LoginFormView.js';
 import { LoginFormModel } from '../models/LoginFormModel.js';
 
 /**
@@ -33,8 +33,9 @@ export async function initLogin() {
     if (emailValidity) {
       await loginFormModel.loginUser(email, password);
     } else {
+      // Supprime le message d'erreur existant, s'il y en a un
+      loginFormView.clearLoginError(loginForm);
       // Si l'email est invalide, affiche une erreur
-      console.error('Invalid email');
       loginFormView.displayLoginError(loginForm);
     }
   });

@@ -1,4 +1,5 @@
 import { UserDashboardView } from '../views/UserDashboardView.js';
+import { getMessage } from '../locales/languageLoader.js';
 
 /**
  * Classe UserDashboardController pour gérer le tableau de bord utilisateur.
@@ -18,7 +19,7 @@ export class UserDashboardController {
   init() {
     // Créer les boutons
     /** @type {HTMLElement} */
-    const editButton = this.view.createButtonWithIcon('modifyButton', 'Mode édition', 'fa-edit');
+    const editButton = this.view.createButtonWithIcon('modifyButton', getMessage("user.editMode"), 'fa-edit');
 
     /** @type {HTMLElement} */
     const publishButton = this.view.createPublishButton();
@@ -51,7 +52,7 @@ export class UserDashboardController {
     const intro = document.getElementById('introFigure');
     
     /** @type {HTMLElement} */
-    const modifyButtonIntro = this.view.createButtonWithIcon('modifyButtonIntro', 'Modifier', 'fa-edit');
+    const modifyButtonIntro = this.view.createButtonWithIcon('modifyButtonIntro', getMessage("user.modify"), 'fa-edit');
 
     intro.append(modifyButtonIntro);
 
@@ -59,7 +60,7 @@ export class UserDashboardController {
     const titleGallery = document.getElementById('titleGallery');
 
     /** @type {HTMLElement} */
-    const modifyButtonTitle = this.view.createButtonWithIcon('openModal', 'Modifier', 'fa-edit');
+    const modifyButtonTitle = this.view.createButtonWithIcon('openModal', getMessage("user.modify"), 'fa-edit');
 
     titleGallery.append(modifyButtonTitle);
   }

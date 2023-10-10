@@ -1,4 +1,5 @@
 import { apiFetch } from '../utils/apiService.js';
+import { LoginFormView } from '../views/LoginFormView.js';
 
 /**
  * Classe qui gère le modèle de la connexion.
@@ -9,7 +10,13 @@ export class LoginFormModel {
    * Crée une instance de LoginFormModel.
    * @constructor
    */
-   constructor() {}
+   constructor() {
+      /**
+      * L'instance de la vue du formulaire de connexion.
+      * @type {LoginFormView}
+      */
+      this.loginFormView = new LoginFormView();
+   }
 
    /**
    * Tente de connecter l'utilisateur en utilisant les informations d'identification fournies.
@@ -33,7 +40,8 @@ export class LoginFormModel {
         console.error(`Erreur: Pas de token dans la réponse`);
       }
     } catch (error) {
-      console.error(`Erreur lors de la tentative de connexion: ${error}`);
+      this.loginFormView.clearLoginError(document.getElementById("login-form"));
+      this.loginFormView.displayLoginError(document.getElementById("login-form"));
     }
   }
 

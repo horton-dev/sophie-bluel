@@ -1,4 +1,5 @@
 import { ACCESS_TOKEN } from "../core/constants.js";
+import { getMessage } from "../locales/languageLoader.js";
 
 /**
  * Classe AuthController pour gérer la connexion/déconnexion.
@@ -19,9 +20,9 @@ export class AuthController {
   init() {
 
     if (ACCESS_TOKEN) {
-      this.loginLink.innerText = 'Logout';
+      this.loginLink.innerText = getMessage("auth.logout");
     } else {
-      this.loginLink.innerText = 'Login';
+      this.loginLink.innerText = getMessage("auth.login");
     }
 
      // Attache un gestionnaire d'événement au clic sur le lien de connexion.
@@ -39,9 +40,15 @@ export class AuthController {
     // Supprime le jeton d'accès du stockage de session et recharge la page si connecté.
     // Sinon, redirige vers la page de connexion.
     if (ACCESS_TOKEN) {
-      sessionStorage.removeItem("accessToken");
-      console.log("token supprimé" + ACCESS_TOKEN);
-      window.location.reload();
+      // Demande de confirmation de la déconnexion
+      const userConfirmed = window.confirm("Êtes-vous sûr de vouloir vous déconnecter ?");
+      if (userConfirmed) {
+        // Supprime le jeton d'accès du stockage de session
+        sessionStorage.removeItem("accessToken");
+        window.location.reload();
+      } else {
+        return;
+      }
     } else {
       window.location.href = "/login.html";
     }

@@ -1,3 +1,5 @@
+import { getMessage } from '../locales/languageLoader.js';
+
 /**
  * Classe qui gère la vue des filtres de catégories.
  * @class
@@ -28,7 +30,7 @@ export class FilterView {
         button.dataset.category = category;  // Pour identifier la catégorie lors des interactions
     
         // Active le bouton "Tous" par défaut
-        if (category === 'tous') {
+        if (category === getMessage("categories.all")) {
             button.id = 'all';
             button.classList.add('active');
         }
@@ -62,7 +64,7 @@ export class FilterView {
         filterContainer.innerHTML = '';
 
     // Ajoute le bouton "Tous"
-        const allButton = this.createCategoryButton("tous");
+        const allButton = this.createCategoryButton(getMessage("categories.all"));
         filterContainer.append(allButton);
 
     // Ajoute des boutons pour chaque catégorie

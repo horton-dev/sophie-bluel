@@ -6,12 +6,16 @@
 
 import { loadHeaderFooter } from './services/layoutService.js';
 import { initLogin } from './controllers/LoginFormController.js';
+import { initializeTextResources } from './locales/languageLoader.js';
 
 /**
  * Écouteur d'événement DOMContentLoaded qui déclenche l'initialisation de la page de connexion.
  * @function initializeLoginPage
  */
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Initialise les ressources textuelles
+  initializeTextResources();
   
   // Charge le header et le footer
   loadHeaderFooter();
