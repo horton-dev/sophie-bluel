@@ -13,6 +13,7 @@ import { UserDashboardController } from './controllers/UserDashboardController.j
 import { ModalController } from './controllers/modalController.js';
 import { WorkGalleryModel } from './models/WorkGalleryModel.js';
 import { AuthController } from './controllers/AuthController.js';
+import { updateTextContent } from './locales/localizationElements.js';
 
 
 /**
@@ -43,11 +44,19 @@ const modalController = new ModalController(workGalleryModel);
  */
 async function initializeApplication() {
   try {
-    // Charge les textes
-    await initializeTextResources();
+   // Charge les textes
+   const success = await initializeTextResources();
 
-    // Charge le header et le footer
-    await loadHeaderFooter();
+   // Charge le header et le footer
+   await loadHeaderFooter();
+ 
+   // Si le chargement des ressources linguistiques a réussi, mettez à jour le contenu du texte.
+   if (success) {
+     updateTextContent(); // Appel à la fonction qui met à jour les textes
+   }
+    
+
+
 
     /**
      * Contrôleur d'authentification.

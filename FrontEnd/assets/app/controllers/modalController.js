@@ -52,6 +52,18 @@ export class ModalController {
       this.modalView.closeModal();
     });
 
+    document.addEventListener('workDeleted', async () => {
+      this.works = await fetchGallery();
+      this.workIds = this.WorkGalleryModel.getWorks();
+      this.initializeAndShowWorks();
+    });
+
+    document.addEventListener('workAdded', async () => {
+      this.modalView.backToGallery();
+      this.works = await fetchGallery();
+      this.workIds = this.WorkGalleryModel.getWorks();
+      this.initializeAndShowWorks();
+    });
   }
   
    /**
@@ -70,7 +82,8 @@ export class ModalController {
         this.modalView.loadAddPictureModal();
         this.modalView.populateCategories(Array.from(categoriesSet));
         this.modalView.initializeImagePreview();
+        this.modalView.initializeForm();
       });
     }  
-  }
+  }  
 }

@@ -7,18 +7,23 @@
 import { loadHeaderFooter } from './services/layoutService.js';
 import { initLogin } from './controllers/LoginFormController.js';
 import { initializeTextResources } from './locales/languageLoader.js';
+import { updateTextContent } from './locales/localizationElements.js';
 
 /**
  * Écouteur d'événement DOMContentLoaded qui déclenche l'initialisation de la page de connexion.
  * @function initializeLoginPage
  */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
   // Initialise les ressources textuelles
-  initializeTextResources();
+  const success = await initializeTextResources();
   
   // Charge le header et le footer
-  loadHeaderFooter();
+  await loadHeaderFooter();
+
+  if (success) {
+    updateTextContent(); // Appel à la fonction qui met à jour les textes
+  }
 
   /**
    * Fonction d'initialisation du formulaire de connexion.
@@ -27,3 +32,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initLogin();
 
 });
+
