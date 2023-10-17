@@ -1,4 +1,5 @@
 import { BASE_URL } from '../core/constants.js';
+import { ACCESS_TOKEN } from '../core/constants.js';
 
 /**
  * Effectue une requête à l'API en utilisant l'endpoint spécifié.
@@ -12,13 +13,16 @@ import { BASE_URL } from '../core/constants.js';
  * @throws {Error} - Une erreur est générée si la réponse de l'API a un statut "204 No Content".
  */
 async function apiFetch(endpoint, options = {}) {
+  console.log("Options de la requête :", options);  
   const response = await fetch(`${BASE_URL}${endpoint}`, options);
   
+  console.log("Réponse complète de l'API:", response); 
 
   // Si la réponse n'est pas OK (status en dehors de la plage 200-299), générer une erreur.
   if (!response.ok) {
       const responseData = await response.json();
       const errorMessage = responseData.message || response.statusText;
+      console.log("Réponse de l'API:", responseData);
       throw new Error(errorMessage);
   }
 
@@ -29,4 +33,18 @@ async function apiFetch(endpoint, options = {}) {
   return await response.json();
 }
 
-export { apiFetch };
+async function apiPost(endpoint, formData) {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    },
+    body: formData
+  };
+
+  return await apiFetch(endpoint, options);
+}
+
+
+export { apiFetch, apiPost };

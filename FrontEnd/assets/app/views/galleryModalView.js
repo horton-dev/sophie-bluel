@@ -1,5 +1,7 @@
 import { WorkGalleryModel } from '../models/WorkGalleryModel.js';
+import { WorkGalleryController } from '../controllers/WorkGalleryController.js';
 import { getMessage } from '../locales/languageLoader.js';
+import { apiPost } from '../utils/apiService.js';
 
 /**
  * Classe qui gère la vue de la fenêtre modale de la galerie.
@@ -41,9 +43,17 @@ export class GalleryModalView {
      */
     this.model = new WorkGalleryModel();
     
+    
     if (!this.modalContainer || !this.overlay ) {
       console.warn('Un ou plusieurs éléments du DOM sont introuvables.');
     }
+
+    /**
+     * Contrôleur de galerie de travaux.
+     * @type {WorkGalleryController}
+     */
+    this.controller = new WorkGalleryController(this.model);
+
   }
 
    /**
@@ -97,10 +107,10 @@ export class GalleryModalView {
   
       if (isFirst) {
         html += `<i class="fas fa-arrows-alt move-icon"></i>`;
-        html += `<i class="fas fa-trash trash-icon"></i>`;
+        html += `<i class="fas fa-trash trash-icon" data-id="${work.id}"></i>`;
         isFirst = false;
       } else {
-        html += `<i class="fas fa-trash trash-icon"></i>`;
+        html += `<i class="fas fa-trash trash-icon" data-id="${work.id}"></i>`;
       }
   
       html += `</figure>`;
@@ -108,10 +118,10 @@ export class GalleryModalView {
   
     modalGallery.innerHTML = html;
   
-    document.querySelectorAll('.delete-button').forEach(button => {
+    document.querySelectorAll('.trash-icon').forEach(button => {
       button.addEventListener('click', (event) => {
         const id = event.target.getAttribute('data-id');
-        // Appelez une méthode pour supprimer l'œuvre
+        this.controller.deleteWork(id);
       });
     });
   }
@@ -130,7 +140,7 @@ export class GalleryModalView {
     const addPictureFileIcon = this.createElement('i', {className: 'fas fa-regular fa-image icon-preview'});
 
     const addPictureFileLabel = this.createElement('label', {htmlFor: 'file', textContent: getMessage('addPicture.file')});
-    const addPictureFile = this.createElement('input', {type: 'file', name: 'file', id: 'file', accept: 'image/png, image/jpeg'});
+    const addPictureFile = this.createElement('input', {type: 'file', name: 'image', id: 'file', accept: 'image/png, image/jpeg'});
     const addPictureFileInfo = this.createElement('p', {id: 'file-info', textContent: getMessage('addPicture.fileInfo')});
 
     const addPicturePreviewContainer = this.createElement('div', {id: 'preview'});
@@ -294,7 +304,7 @@ export class GalleryModalView {
     if (categorySelect) {
       categoriesArray.forEach((category) => {
         const option = document.createElement('option');
-        option.value = category.name;
+        option.value = category.id;
         option.textContent = category.name;
         categorySelect.appendChild(option);
       });
@@ -336,5 +346,39 @@ export class GalleryModalView {
         reader.readAsDataURL(file);
       });
     }
-  } 
+  }
+
+  initializeForm() {
+    const form = document.getElementById('modal-form');
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        this.displayFormData();
+      });
+    }
+  }
+  
+  async displayFormData() {
+    const formData = new FormData(document.getElementById('modal-form'));
+    
+  
+    // Affichage des données du formulaire dans la console pour le débogage
+    for (const [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+    console.log('Données du formulaire en tableau:', Array.from(formData.entries()));
+
+  
+    try {
+      // Appel à l'API
+      const response = await apiPost('works', formData);
+      document.dispatchEvent(new Event('workAdded'));
+      console.log('Réponse de l\'API:', response);
+      
+    } catch (error) {
+      // Traitez l'erreur ici. Par exemple, vous pouvez afficher un message d'erreur à l'utilisateur.
+      console.log('Erreur lors de l\'envoi des données:', error);
+    }
+  }
+  
 }

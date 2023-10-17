@@ -1,3 +1,5 @@
+
+
 /** @type {Object} - Cache pour les contenus traduits chargés. */
 const cachedContents = {};
 

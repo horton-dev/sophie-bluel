@@ -54,6 +54,7 @@ export class WorkGalleryView {
    * @param {Object[]} works - Un tableau d'objets représentant les œuvres.
    */
   renderGallery(works) {
+    console.log("Rendu de la galerie avec les données :", works);
     this.clearGallery();
     works.forEach(work => {
       const workElement = this.createWorkElement(work);

@@ -1,0 +1,71 @@
+{
+  "errors": {
+      "api.defaultMessage": "An error occurred while communicating with the server.",
+      "API_GALLERY_FETCH_ERROR": "Failed to fetch gallery from server.",
+      "default": "An unexpected error has occurred.",
+      "gallery.loadError": "Could not load gallery. Please try again later.",
+      "categories.loadError": "Error loading categories. Please try again later.",
+      "filter.actionError": "An error occurred while filtering works.",
+      "filterService.fetchError": "Unable to retrieve categories."
+  },
+  "gallery": {
+    "noItems": "No items found.",
+    "title": "Photo gallery",
+    "add": "Add a photo",
+    "delete": "Delete gallery",
+    "edit": "edit"
+  },
+  "addPicture": {
+    "title": "Add photo",
+    "file": "+ Add photo",
+    "fileInfo": "jpg, png: 4mb max",
+    "addTitle": "Title",
+    "addCategory": "Category",
+    "submit": "Validate"
+  },
+  "categories": {
+    "all": "All"
+  },
+  "auth": {
+    "login": "login",
+    "logout": "logout",
+    "title": "Log In",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "passwordLost": "Forgotten password",
+    "loginError": "Error in username or password.",
+    "logoutConfirm": "Are you sure you want to log out?"
+  },
+  "user": {
+    "modify": "modify",
+    "editMode": "Edit mode",
+    "publish": "Publish uploads"
+  },
+  "header": {
+    "name": "Sophie Bluel",
+    "nameTitle": "Interior designer",
+    "portfolio": "projects",
+    "contact": "contact"
+  },
+  "footer": {
+    "legal": "Legal notices"
+  },
+  "main": {
+    "title": "Space designer",
+    "info": "I tell your story, I promote your ideas. I support you from design to final delivery of the site.",
+    "info1": "Each project will be studied jointly, so as to highlight the volumes, materials and colors while respecting the spirit of the place and the appropriate choice of materials. Site monitoring will be ensured in the attention to detail, respect for planning and budget.",
+    "info2": "If necessary, a multidisciplinary team can be formed: DPLG architect, decorator"
+  },
+  "projet": {
+    "title": "My Projects"
+  },
+  "contact": {
+    "title": "Contact",
+    "info": "Do you have a project? Let's discuss it!",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit"
+  }
+}

@@ -1,5 +1,6 @@
 import { ACCESS_TOKEN } from "../core/constants.js";
 import { getMessage } from "../locales/languageLoader.js";
+import { logError, displayErrorOnDOM } from "../core/errorHandler.js";
 
 /**
  * Classe AuthController pour gérer la connexion/déconnexion.
@@ -37,19 +38,27 @@ export class AuthController {
     // Annule l'action par défaut de l'événement.
     e.preventDefault();
 
+    try {
     // Supprime le jeton d'accès du stockage de session et recharge la page si connecté.
     // Sinon, redirige vers la page de connexion.
     if (ACCESS_TOKEN) {
       // Demande de confirmation de la déconnexion
-      const userConfirmed = window.confirm("Êtes-vous sûr de vouloir vous déconnecter ?");
+      const userConfirmed = window.confirm(getMessage("auth.logoutConfirm"));
       if (userConfirmed) {
         // Supprime le jeton d'accès du stockage de session
         sessionStorage.removeItem("accessToken");
         window.location.reload();
       } else {
-        return;
+        logError("TOKEN_NOT_REMOVED");
+        displayErrorOnDOM("TOKEN_NOT_REMOVED", "id_of_DOM_element_to_display_error");
+        
       }
     } else {
       window.location.href = "/login.html";
     }
-  }};
+  } catch (error) {
+    logError("UNEXPECTED_ERROR");  // Vous pouvez définir ce code d'erreur dans votre fichier de messages d'erreur.
+    displayErrorOnDOM("UNEXPECTED_ERROR", "id_of_DOM_element_to_display_error");
+  }
+}
+}
